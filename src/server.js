@@ -16,4 +16,7 @@ app.use(cors());
 
 // start the app
 const port = process.env.PORT || 5000;
-server.listen(port, () => console.log("Server started on port " + port));
+server.listen(port, () => {
+    console.log("Stack HRIS-ATTENDANCE Server \n");
+    console.log("Server started on port " + port)
+});
