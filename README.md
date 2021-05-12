@@ -34,11 +34,6 @@ Before you proceed, make sure to have a MongoDB instance running on your develop
 
 <br>
 
-## Seeding Modes
-To apply, make a `SEED_MODE` variable.
-- acc
-- all
-
 ## Environment Variables
 - DBURI
 - NODE_ENV
