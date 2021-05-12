@@ -34,18 +34,8 @@ Before you proceed, make sure to have a MongoDB instance running on your develop
 
 <br>
 
-## Seeding Modes
-To apply, make a `SEED_MODE` variable.
-- acc
-- all
-
 ## Environment Variables
-- port
-- dbHost
-- dbPort
-- dbUser
-- dbPassword
-- dbName
+- DBURI
 - NODE_ENV
 - JWT_ACCESS_SECRET
 - JWT_REFRESH_SECRET
@@ -53,8 +43,6 @@ To apply, make a `SEED_MODE` variable.
 - JWT_ACCESS_DURATION
 - JWT_REFRESH_DURATION
 - JWT_EMAIL_DURATION
-- DEFAULT_EMAIL
-- DEFAULT_PASSWORD
 
 ## Delopers
  - Ryan Nograles
