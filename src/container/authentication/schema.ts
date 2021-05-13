@@ -2,6 +2,27 @@ import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
 import { messageBuilder, cleaner } from '../../_common/messages';
 
+const adminId = Joi.string()
+    .required()
+    .allow('')
+    .messages(messageBuilder({ field: 'Admin ID' }));
+
+const contactNumber = Joi.object()
+    .keys({
+        mobileNumber: Joi.array()
+            .items(Joi.string())
+            .required()
+            .allow('')
+            .messages(messageBuilder({ field: 'Mobile Number' })),
+        landLineNumber: Joi.array()
+            .items(Joi.string(), Joi.number())
+            .required()
+            .allow('')
+            .messages(messageBuilder({ field: 'Landline Number' }))
+    })
+    .required()
+    .messages(messageBuilder({ field: 'Contact Number' }));
+
 const name = Joi.object().keys({
     firstName: Joi.string()
         .allow('')
@@ -14,7 +35,6 @@ const name = Joi.object().keys({
     lastName: Joi.string()
         .allow('')
         .required()
-        .required()
         .messages(messageBuilder({ field: 'Last name' })),
     suffix: Joi.string()
         .allow('')
@@ -26,9 +46,57 @@ const name = Joi.object().keys({
         .messages(messageBuilder({ field: 'Title' }))
 });
 
+const role = Joi.string()
+    .allow('')
+    .required()
+    .messages(messageBuilder({ field: 'Role' }));
+
+const permission = Joi.array()
+    .items(Joi.string())
+    .required()
+    .messages(messageBuilder({ field: 'Permission' }));
+
+const address = Joi.object()
+    .keys({
+        homeNumOrLotNum: Joi.string()
+            .required()
+            .allow('')
+            .messages(messageBuilder({ field: 'Home number / Lot Number' })),
+        streetName: Joi.string()
+            .required()
+            .allow('')
+            .messages(messageBuilder({ field: 'Street Name' })),
+        districtOrTown: Joi.string()
+            .required()
+            .allow('')
+            .messages(messageBuilder({ field: 'District / Town' })),
+        zipCode: Joi.string()
+            .required()
+            .allow('')
+            .min(4)
+            .max(4)
+            .messages(messageBuilder({ field: 'Zip Code' })),
+        province: Joi.string()
+            .required()
+            .allow('')
+            .messages(messageBuilder({ field: 'Province' })),
+        country: Joi.string()
+            .required()
+            .allow('')
+            .messages(messageBuilder({ field: 'Country' }))
+    })
+    .required();
+
 const authSchema = Joi.object()
     .keys({
-        name
+        contactNumber,
+        adminId,
+        name,
+        homeAddress: address.messages(messageBuilder({ field: 'Home Address' })),
+        currentAddress: address.messages(messageBuilder({ field: 'Current Address' })),
+        permanentAddress: address.messages(messageBuilder({ field: 'Permanent Address' })),
+        role,
+        permission
     })
     .messages(messageBuilder({ field: '' }));
 
