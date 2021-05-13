@@ -26,15 +26,19 @@ const name = Joi.object().keys({
         .messages(messageBuilder({ field: 'Title' }))
 });
 
-const authSchema = Joi.object().keys({
-    name
-});
+const authSchema = Joi.object()
+    .keys({
+        name
+    })
+    .messages(messageBuilder({ field: '' }));
 
 const validate = () => {
     return (req: Request, res: Response, next: NextFunction) => {
         const { error } = authSchema.validate(req.body, { abortEarly: false });
-        const cleanError = cleaner(error);
-        if (error) return res.status(400).json(cleanError);
+        if (error) {
+            const cleanError = cleaner(error);
+            return res.status(400).json(cleanError);
+        }
         next();
     };
 };
