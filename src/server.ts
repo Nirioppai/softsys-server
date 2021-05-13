@@ -1,7 +1,6 @@
 // code goes here
-import express, { Application, Request, Response, NextFunction } from 'express';
+import express, { Application } from 'express';
 import http from 'http';
-import logging from './_config/logging';
 import cors from 'cors';
 
 // routes
@@ -21,20 +20,6 @@ app.use(cors());
 
 // this section consumes the apis
 app.use('/api/auth', authRoutes);
-
-/**
- * This section logs the server requests
- */
-const NAMESPACE = 'Server';
-app.use((req: Request, res: Response, next: NextFunction) => {
-    logging.info(NAMESPACE, `METHOD - [${req.method}], URL - [${req.url}], IP - [${req.socket.remoteAddress}]`);
-
-    res.on('finish', () => {
-        logging.info(NAMESPACE, `METHOD - [${req.method}], URL - [${req.url}], IP - [${req.socket.remoteAddress}], STATUS - [${res.statusCode}]`);
-    });
-
-    next();
-});
 
 // start the app
 const port = process.env.PORT || 5000;
