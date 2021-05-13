@@ -21,7 +21,7 @@ class AuthService {
         let isExisting = await AdminModel.find({ adminId: adminInfo.adminId });
 
         // return if there is a duplicate
-        if (isExisting.length > 0) return { success: false, message: 'User already exist', code: 400 };
+        if (isExisting.length > 0) return { success: false, message: 'Account already exist', code: 400 };
 
         // set a default password
         adminInfo.password = await bscryptjs.hash(process.env.DEFAULT_PASSWORD || 'DEVSCRUM', 10);

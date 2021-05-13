@@ -18,6 +18,6 @@ router.post('/login', authController.login);
 /**
  *  Route to get all adminis
  */
-router.post('/register', [validate()], authController.register);
+router.post('/admin/register', [validate()], authController.register);
 
 export = router;
