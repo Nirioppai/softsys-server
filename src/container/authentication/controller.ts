@@ -15,10 +15,9 @@ const register = async (req: Request, res: Response) => {
     const body: Object = req.body;
 
     const result: any = await authService.adminRegister(body);
-    console.log(result);
-    // if (!result.success) {
-    //     res.status(result.code).send(result.message);
-    // }
+    if (!result.success) {
+        res.status(result.code).send(result.message);
+    }
 
     res.status(200).send(result);
 };
