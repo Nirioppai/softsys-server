@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 
 // models and services
 import { AdminModel } from '../admin/index';
-import { ExistsError, LogicError } from '../../_errors';
 
 dotenv.config();
 /**
@@ -22,19 +21,17 @@ class AuthService {
         let isExisting = await AdminModel.find({ adminId: adminInfo.adminId });
 
         // return if there is a duplicate
-        if (isExisting.length > 0) return { success: false, message: new ExistsError('User'), code: 400 };
+        if (isExisting.length > 0) return { success: false, message: 'User already exist', code: 400 };
 
         // set a default password
         adminInfo.password = await bscryptjs.hash(process.env.DEFAULT_PASSWORD || 'DEVSCRUM', 10);
 
         try {
             const newAdmin = new AdminModel(adminInfo);
-
             await newAdmin.save();
-
             return { success: true, data: newAdmin, code: 201, message: 'Account Created Successfully' };
         } catch (error) {
-            return { success: false, message: new LogicError('Failed to create account'), deepLog: error, code: 400 };
+            return { success: false, message: 'Failed to create a new account', deepLog: error, code: 400 };
         }
     }
 }
