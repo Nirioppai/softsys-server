@@ -91,7 +91,7 @@ const password = Joi.string()
     .required()
     .messages(messageBuilder({ field: 'Password' }));
 
-const authSchema = Joi.object()
+const adminRegisterSchema = Joi.object()
     .keys({
         contactNumber,
         adminId,
@@ -111,9 +111,9 @@ const loginSchema = Joi.object()
     })
     .messages(messageBuilder({ field: '' }));
 
-const validate = () => {
+const validateRegister = () => {
     return (req: Request, res: Response, next: NextFunction) => {
-        const { error } = authSchema.validate(req.body, { abortEarly: false });
+        const { error } = adminRegisterSchema.validate(req.body, { abortEarly: false });
         if (error) {
             const cleanError = cleaner(error);
             return res.status(400).json(cleanError);
@@ -133,4 +133,4 @@ const validateLogin = () => {
     };
 };
 
-export { authSchema, validate, validateLogin };
+export { adminRegisterSchema, validateRegister, validateLogin };

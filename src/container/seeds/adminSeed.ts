@@ -1,15 +1,16 @@
-const faker = require('faker');
-const bcrypt = require('bcryptjs');
+import { AdminModel } from '../admin/index';
+import faker from 'faker';
+import bcryptjs from 'bcryptjs';
+import dotenv from 'dotenv';
 
-import { AdminModel } from '../container/admin/index';
+dotenv.config();
 
 // DB Config
-require('dotenv').config();
-require('../_config/dbConf')();
+require('../../_config/dbConf')();
 
-export default async () => {
+const AdminSeed = async () => {
     // hash password with the default value of DEVSCRUM
-    const password = await bcrypt.hash(process.env.DEFAULT_PASSWORD || 'DEVSCRUM', 10);
+    const password = await bcryptjs.hash(process.env.DEFAULT_PASSWORD || 'DEVSCRUM', 10);
 
     // delete previous admin accounts on the data base
     await AdminModel.deleteMany({});
@@ -24,7 +25,7 @@ export default async () => {
     // create 10 random accounts
     for (let i = 0; i < 10; i++) {
         const admins = new AdminModel({
-            adminId: '2021-' + faker.datatype.number(1000, 9999),
+            adminId: '2021-' + faker.datatype.number(9999),
             name: {
                 firstName: faker.name.firstName(),
                 middleName: faker.name.middleName(),
@@ -78,3 +79,5 @@ export default async () => {
     await AdminModel.insertMany(adminAccounts);
     console.log('Seeding admin accounts ...');
 };
+
+export default AdminSeed;

@@ -1,6 +1,7 @@
 import authRoutes from './routers';
 import authService from './service';
-import { authSchema, validate, validateLogin } from './schema';
 import authController from './controller';
+import { adminRegisterSchema, validateRegister, validateLogin } from './schema';
 
-export { authRoutes, authSchema, validate, validateLogin, authService, authController };
+export { authRoutes, adminRegisterSchema, validateRegister, validateLogin, authService, authController };
+

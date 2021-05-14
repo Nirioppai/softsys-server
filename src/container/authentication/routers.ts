@@ -1,5 +1,5 @@
 import express from 'express';
-import { authController, validate, validateLogin } from './index';
+import { authController, validateRegister, validateLogin } from './index';
 
 const router = express.Router();
 
@@ -13,11 +13,11 @@ const router = express.Router();
  * @param { email, password } req
  *
  */
-router.post('/login', [validateLogin()], authController.login);
+router.post('/admin/login', [validateLogin()], authController.login);
 
 /**
  *  Route to get all adminis
  */
-router.post('/register', [validate()], authController.register);
+router.post('/admin/register', [validateRegister()], authController.register);
 
 export = router;
