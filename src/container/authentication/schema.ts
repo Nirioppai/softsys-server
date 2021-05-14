@@ -87,6 +87,10 @@ const address = Joi.object()
     })
     .required();
 
+const password = Joi.string()
+    .required()
+    .messages(messageBuilder({ field: 'Password' }));
+
 const authSchema = Joi.object()
     .keys({
         contactNumber,
@@ -97,6 +101,13 @@ const authSchema = Joi.object()
         permanentAddress: address.messages(messageBuilder({ field: 'Permanent Address' })),
         role,
         permission
+    })
+    .messages(messageBuilder({ field: '' }));
+
+const loginSchema = Joi.object()
+    .keys({
+        adminId,
+        password
     })
     .messages(messageBuilder({ field: '' }));
 
@@ -111,4 +122,15 @@ const validate = () => {
     };
 };
 
-export { authSchema, validate };
+const validateLogin = () => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        const { error } = loginSchema.validate(req.body, { abortEarly: false });
+        if (error) {
+            const cleanError = cleaner(error);
+            return res.status(400).json(cleanError);
+        }
+        next();
+    };
+};
+
+export { authSchema, validate, validateLogin };
