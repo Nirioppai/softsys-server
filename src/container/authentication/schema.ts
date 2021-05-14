@@ -87,6 +87,10 @@ const address = Joi.object()
     })
     .required();
 
+const password = Joi.string()
+    .required()
+    .messages(messageBuilder({ field: 'Password' }));
+
 const adminRegisterSchema = Joi.object()
     .keys({
         contactNumber,
@@ -100,7 +104,14 @@ const adminRegisterSchema = Joi.object()
     })
     .messages(messageBuilder({ field: '' }));
 
-const validate = () => {
+const loginSchema = Joi.object()
+    .keys({
+        adminId,
+        password
+    })
+    .messages(messageBuilder({ field: '' }));
+
+const validateRegister = () => {
     return (req: Request, res: Response, next: NextFunction) => {
         const { error } = adminRegisterSchema.validate(req.body, { abortEarly: false });
         if (error) {
@@ -111,4 +122,15 @@ const validate = () => {
     };
 };
 
-export { adminRegisterSchema, validate };
+const validateLogin = () => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        const { error } = loginSchema.validate(req.body, { abortEarly: false });
+        if (error) {
+            const cleanError = cleaner(error);
+            return res.status(400).json(cleanError);
+        }
+        next();
+    };
+};
+
+export { adminRegisterSchema, validateRegister, validateLogin };
