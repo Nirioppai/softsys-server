@@ -1,4 +1,4 @@
-# Stack HIRS System
+# Stack HRIS System
 <small> Last updated on 04/28/2021. </small>
 
 ## Possible Breaking Changes
