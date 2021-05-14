@@ -87,7 +87,7 @@ const address = Joi.object()
     })
     .required();
 
-const authSchema = Joi.object()
+const adminRegisterSchema = Joi.object()
     .keys({
         contactNumber,
         adminId,
@@ -102,7 +102,7 @@ const authSchema = Joi.object()
 
 const validate = () => {
     return (req: Request, res: Response, next: NextFunction) => {
-        const { error } = authSchema.validate(req.body, { abortEarly: false });
+        const { error } = adminRegisterSchema.validate(req.body, { abortEarly: false });
         if (error) {
             const cleanError = cleaner(error);
             return res.status(400).json(cleanError);
@@ -111,4 +111,4 @@ const validate = () => {
     };
 };
 
-export { authSchema, validate };
+export { adminRegisterSchema, validate };
