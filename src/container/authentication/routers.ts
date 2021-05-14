@@ -1,5 +1,5 @@
 import express from 'express';
-import { authController, validate } from './index';
+import { authController, validate, validateLogin } from './index';
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ const router = express.Router();
  * @param { email, password } req
  *
  */
-router.post('/login', authController.login);
+router.post('/login', [validateLogin()], authController.login);
 
 /**
  *  Route to get all adminis

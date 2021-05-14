@@ -34,6 +34,30 @@ class AuthService {
             return { success: false, message: 'Failed to create a new account', deepLog: error, code: 400 };
         }
     }
+
+    async adminLogin(adminInfo: any) {
+        // Find if account exists
+        let isExisting = await AdminModel.find({ adminId: adminInfo.adminId });
+
+        // Return if does not exists
+        if (isExisting.length === 0) return { success: false, message: 'User does not exist', code: 400 };
+
+        // Compare Password
+        let admin: any = await AdminModel.findOne({ adminId: adminInfo.adminId });
+
+        let isMatch = await bscryptjs.compare(adminInfo.password, admin.password);
+
+        // Return if password was wrong
+        if (!isMatch) return { success: false, message: 'Invalid Credentials', code: 400 };
+
+        try {
+            const token = jwt.sign({ adminId: admin.adminId }, process.env.JWT_ACCESS_SECRET || 'helloworld', { expiresIn: process.env.JWT_ACCESS_DURATION });
+
+            return { success: true, data: `Bearer ${token}`, code: 201, message: 'Login Success' };
+        } catch (error) {
+            return { success: false, message: 'Failed to Login', deepLog: error, code: 400 };
+        }
+    }
 }
 
 export default AuthService;
