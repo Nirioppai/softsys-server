@@ -4,7 +4,8 @@ import IAdmin from './_interface';
 const AdminSchema: Schema = new Schema(
     {
         adminId: {
-            type: String
+            type: String,
+            required: true
         },
         name: {
             firstName: { type: String },
@@ -14,7 +15,7 @@ const AdminSchema: Schema = new Schema(
             suffix: { type: String }
         },
         gender: {
-            type: { type: String },
+            type: String,
             default: ''
         },
         dateOfBirth: {
@@ -51,7 +52,7 @@ const AdminSchema: Schema = new Schema(
             country: { type: String, default: '' }
         },
         role: {
-            type: { type: String },
+            type: String,
             default: ''
         },
         permissions: [{ type: String }],
@@ -60,11 +61,11 @@ const AdminSchema: Schema = new Schema(
             default: 'admin'
         },
         nationality: {
-            type: { type: String },
+            type: String,
             default: ''
         },
         isActive: {
-            type: { type: Boolean },
+            type: Boolean,
             default: false
         },
         password: {

@@ -6,6 +6,7 @@ import cors from 'cors';
 // routes
 import authRoutes from './container/authentication/routers';
 import seedRoutes from './container/seeds/routers';
+import adminRoutes from './container/admin/routers';
 
 // require database configs and dotenv to allow the use or env variables
 require('dotenv').config();
@@ -22,6 +23,7 @@ app.use(cors());
 // this section consumes the apis
 app.use('/api/auth', authRoutes);
 app.use('/api/seeds', seedRoutes);
+app.use('/api/admin', adminRoutes);
 
 // start the app
 const port = process.env.PORT || 5000;
