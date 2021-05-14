@@ -4,3 +4,4 @@ import authController from './controller';
 import { adminRegisterSchema, validateRegister, validateLogin } from './schema';
 
 export { authRoutes, adminRegisterSchema, validateRegister, validateLogin, authService, authController };
+
