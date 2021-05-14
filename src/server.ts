@@ -5,6 +5,7 @@ import cors from 'cors';
 
 // routes
 import authRoutes from './container/authentication/routers';
+import seedRoutes from './container/authentication/routers';
 
 // require database configs and dotenv to allow the use or env variables
 require('dotenv').config();
@@ -12,7 +13,7 @@ require('./_config/dbConf')();
 
 const app: Application = express();
 const server = http.createServer(app);
-// changes
+
 // use json to enable to receive and respond with json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -20,6 +21,7 @@ app.use(cors());
 
 // this section consumes the apis
 app.use('/api/auth', authRoutes);
+app.use('/api/seeds', seedRoutes);
 
 // start the app
 const port = process.env.PORT || 5000;
