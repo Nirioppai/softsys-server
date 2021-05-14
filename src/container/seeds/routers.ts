@@ -16,7 +16,7 @@ router.post('/admin-accounts', adminSeed);
 /**
  *  Route to create/seed permissions
  */
-router.post('/permission', permissionSeed);
+router.post('/permissions', permissionSeed);
 
 /**
  *  Route to execute all seeded data
