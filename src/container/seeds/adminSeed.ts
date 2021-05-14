@@ -78,8 +78,6 @@ const AdminSeed = async () => {
     // inserts accounts to database
     await AdminModel.insertMany(adminAccounts);
     console.log('Seeding admin accounts ...');
-
-    return { success: true };
 };
 
 export default AdminSeed;

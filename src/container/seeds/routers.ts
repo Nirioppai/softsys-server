@@ -1,5 +1,5 @@
 import express from 'express';
-import { adminSeed, seedAll } from './controller';
+import { adminSeed, permissionSeed, seedAll } from './controller';
 
 const router = express.Router();
 
@@ -12,6 +12,11 @@ const router = express.Router();
  *  Route to create/seed admin accounts
  */
 router.post('/admin-accounts', adminSeed);
+
+/**
+ *  Route to create/seed permissions
+ */
+router.post('/permission', permissionSeed);
 
 /**
  *  Route to execute all seeded data
