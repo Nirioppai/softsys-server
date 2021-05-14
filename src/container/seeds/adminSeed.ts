@@ -1,10 +1,12 @@
 import { AdminModel } from '../admin/index';
 import faker from 'faker';
 import bcryptjs from 'bcryptjs';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // DB Config
-require('dotenv').config();
-require('../_config/dbConf')();
+require('../../_config/dbConf')();
 
 const AdminSeed = async () => {
     // hash password with the default value of DEVSCRUM

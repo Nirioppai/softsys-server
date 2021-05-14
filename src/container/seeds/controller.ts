@@ -13,4 +13,10 @@ const adminSeed = async (req: Request, res: Response) => {
     res.status(200).send(result);
 };
 
-export { adminSeed };
+const seedAll = async (req: Request, res: Response) => {
+    await AdminSeed();
+
+    res.status(200).send({ success: true, message: 'All data has been successfully seeded . . . ' });
+};
+
+export { adminSeed, seedAll };

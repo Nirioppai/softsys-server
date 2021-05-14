@@ -5,7 +5,7 @@ import cors from 'cors';
 
 // routes
 import authRoutes from './container/authentication/routers';
-import seedRoutes from './container/authentication/routers';
+import seedRoutes from './container/seeds/routers';
 
 // require database configs and dotenv to allow the use or env variables
 require('dotenv').config();
