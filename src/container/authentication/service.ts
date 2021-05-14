@@ -51,7 +51,17 @@ class AuthService {
         if (!isMatch) return { success: false, message: 'Invalid Credentials', code: 400 };
 
         try {
-            const token = jwt.sign({ adminId: admin.adminId }, process.env.JWT_ACCESS_SECRET || 'helloworld', { expiresIn: process.env.JWT_ACCESS_DURATION });
+            const token = jwt.sign(
+                {
+                    _id: admin._id,
+                    adminId: admin.adminId,
+                    type: admin.type,
+                    role: admin.role,
+                    permissions: admin.permissions
+                },
+                process.env.JWT_ACCESS_SECRET || 'hello world',
+                { expiresIn: process.env.JWT_ACCESS_DURATION }
+            );
 
             return { success: true, data: `Bearer ${token}`, code: 201, message: 'Login Success' };
         } catch (error) {
