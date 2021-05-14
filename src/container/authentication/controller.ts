@@ -7,7 +7,13 @@ const authService = new AuthService();
 // logs a user in
 const login = async (req: Request, res: Response) => {
     const { adminId, password } = req.body;
-    res.status(200).send({});
+
+    const result: any = await authService.adminLogin({ adminId, password });
+    if (!result.success) {
+        res.status(result.code).send(result.message);
+    }
+
+    res.status(200).send(result);
 };
 
 // register a user in
