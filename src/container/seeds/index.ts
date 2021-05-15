@@ -1,5 +1,6 @@
 import adminSeed from './adminSeed';
+import employeeSeed from './employeeSeed';
 import permissionSeed from './permissionSeed';
 import { seedAll } from './controller';
 
-export { adminSeed, permissionSeed, seedAll };
+export { adminSeed, employeeSeed, permissionSeed, seedAll };

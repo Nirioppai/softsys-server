@@ -9,15 +9,15 @@ const router = express.Router();
  */
 
 /**
- * Route to log in a user
- * @param { email, password } req
- *
+ *  Auth Route for admin
  */
-router.post('/admin/login', [validateLogin()], authController.login);
+router.post('/admin/login', [validateLogin('admin')], authController.login('admin'));
+router.post('/admin/register', [validateRegister()], authController.register('admin'));
 
 /**
- *  Route to get all adminis
+ *  Auth Route for employee
  */
-router.post('/admin/register', [validateRegister()], authController.register);
+router.post('/employee/register', [validateRegister()], authController.register('employee'));
+router.post('/employee/login', [validateLogin('employee')], authController.login('employee'));
 
 export = router;

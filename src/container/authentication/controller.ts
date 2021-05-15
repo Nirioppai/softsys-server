@@ -5,27 +5,28 @@ import AuthService from './service';
 const authService = new AuthService();
 
 // logs a user in
-const login = async (req: Request, res: Response) => {
-    const { adminId, password } = req.body;
+function login(role: String) {
+    return async (req: Request, res: Response) => {
+        const body: Object = req.body;
+        const result: any = await authService.login(body, role);
+        if (!result.success) {
+            res.status(result.code).send(result.message);
+        }
 
-    const result: any = await authService.adminLogin({ adminId, password });
-    if (!result.success) {
-        res.status(result.code).send(result.message);
-    }
-
-    res.status(200).send(result);
-};
-
+        res.status(200).send(result);
+    };
+}
 // register a user in
-const register = async (req: Request, res: Response) => {
-    const body: Object = req.body;
+function register(role: String) {
+    return async function (req: Request, res: Response) {
+        const body: Object = req.body;
 
-    const result: any = await authService.adminRegister(body);
-    if (!result.success) {
-        return res.status(result.code).send(result);
-    }
+        const result: any = await authService.register(body, role);
+        if (!result.success) {
+            return res.status(result.code).send(result);
+        }
 
-    res.status(200).send(result);
-};
-
+        res.status(200).send(result);
+    };
+}
 export default { login, register };
