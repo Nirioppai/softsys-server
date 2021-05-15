@@ -1,0 +1,62 @@
+// Admin Registration apis with schema of payload 
+POST  http://localhost:5000/api/auth/admin/register
+Content-Type: application/json
+
+{
+    "adminId": "2021-0002",
+    "name": {
+        "firstName": "Ryan",
+        "middleName": "",
+        "lastName": "Nograles",
+        "suffix": "",
+        "title": ""
+    },
+    "contactNumber": {
+        "mobileNumber": [],
+        "landLineNumber": []
+    },
+    "homeAddress": {
+        "homeNumOrLotNum": "",
+        "streetName": "",
+        "districtOrTown": "",
+        "zipCode": "",
+        "province": "",
+        "country": ""
+    },
+    "permanentAddress": {
+        "homeNumOrLotNum": "",
+        "streetName": "",
+        "districtOrTown": "",
+        "zipCode": "",
+        "province": "",
+        "country": ""
+    },
+    "currentAddress": {
+        "homeNumOrLotNum": "",
+        "streetName": "",
+        "districtOrTown": "",
+        "zipCode": "",
+        "province": "",
+        "country": ""
+    },
+    "role": "",
+    "permission": []
+}
+
+
+###
+
+
+// Admin Login apis with schema of payload 
+POST http://localhost:5000/api/auth/admin/login
+Content-Type: application/json
+
+{
+    "adminId" : "2021-0002",
+    "password": "DEVSCRUM"
+}
+
+
+// Employee Registration apis with schema of payload 
+POST  http://localhost:5000/api/auth/admin/register
+Content-Type: application/json

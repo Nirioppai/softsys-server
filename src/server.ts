@@ -7,6 +7,8 @@ import cors from 'cors';
 import authRoutes from './container/authentication/routers';
 import seedRoutes from './container/seeds/routers';
 import adminRoutes from './container/admin/routers';
+import employeeRoutes from './container/employee/routers';
+import employeeInformationRoutes from './container/employeeInformation/routers';
 
 // require database configs and dotenv to allow the use or env variables
 require('dotenv').config();
@@ -24,6 +26,8 @@ app.use(cors());
 app.use('/api/auth', authRoutes);
 app.use('/api/seeds', seedRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/employee', employeeRoutes);
+app.use('/api/employeeInformation', employeeInformationRoutes);
 
 // start the app
 const port = process.env.PORT || 5000;

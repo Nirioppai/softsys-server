@@ -6,6 +6,10 @@ const adminId = Joi.string()
     .required()
     .allow('')
     .messages(messageBuilder({ field: 'Admin ID' }));
+const employeeId = Joi.string()
+    .required()
+    .allow('')
+    .messages(messageBuilder({ field: 'Employee ID' }));
 
 const contactNumber = Joi.object()
     .keys({
@@ -91,7 +95,7 @@ const password = Joi.string()
     .required()
     .messages(messageBuilder({ field: 'Password' }));
 
-const adminRegisterSchema = Joi.object()
+const registerSchema = Joi.object()
     .keys({
         contactNumber,
         adminId,
@@ -104,16 +108,22 @@ const adminRegisterSchema = Joi.object()
     })
     .messages(messageBuilder({ field: '' }));
 
-const loginSchema = Joi.object()
+const adminLoginSchema = Joi.object()
     .keys({
         adminId,
+        password
+    })
+    .messages(messageBuilder({ field: '' }));
+const employeeLoginSchema = Joi.object()
+    .keys({
+        employeeId,
         password
     })
     .messages(messageBuilder({ field: '' }));
 
 const validateRegister = () => {
     return (req: Request, res: Response, next: NextFunction) => {
-        const { error } = adminRegisterSchema.validate(req.body, { abortEarly: false });
+        const { error } = registerSchema.validate(req.body, { abortEarly: false });
         if (error) {
             const cleanError = cleaner(error);
             return res.status(400).json(cleanError);
@@ -122,9 +132,17 @@ const validateRegister = () => {
     };
 };
 
-const validateLogin = () => {
+const validateLogin = (role: String) => {
     return (req: Request, res: Response, next: NextFunction) => {
-        const { error } = loginSchema.validate(req.body, { abortEarly: false });
+        let schema: any;
+        if (role === 'admin') {
+            schema = adminLoginSchema;
+        } else if (role === 'employee') {
+            schema = employeeLoginSchema;
+        } else {
+            schema = null;
+        }
+        const { error } = schema.validate(req.body, { abortEarly: false });
         if (error) {
             const cleanError = cleaner(error);
             return res.status(400).json(cleanError);
@@ -133,4 +151,4 @@ const validateLogin = () => {
     };
 };
 
-export { adminRegisterSchema, validateRegister, validateLogin };
+export { registerSchema, validateRegister, validateLogin };
