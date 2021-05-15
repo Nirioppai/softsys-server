@@ -9,7 +9,7 @@ module.exports = async () => {
             useFindAndModify: false,
             useCreateIndex: true
         });
-        console.log('Database is now connected...');
+        console.log('Database is now connected 1...');
     } catch (err) {
         throw new Error('Faild to connect to the database');
     }

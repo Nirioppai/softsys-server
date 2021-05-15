@@ -5,9 +5,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// DB Config
-require('../../_config/dbConf')();
-
 const AdminSeed = async () => {
     // hash password with the default value of DEVSCRUM
     const password = await bcryptjs.hash(process.env.DEFAULT_PASSWORD || 'DEVSCRUM', 10);
