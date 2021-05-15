@@ -6,7 +6,6 @@ import dotenv from 'dotenv';
 // models and services
 import { AdminModel } from '../admin/index';
 import { EmployeeModel } from '../employee/index';
-import { throws } from 'assert';
 
 dotenv.config();
 /**
