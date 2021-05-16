@@ -57,7 +57,7 @@ const EmployeeSchema: Schema = new Schema(
         permissions: [{ type: String }],
         type: {
             type: String,
-            default: 'admin'
+            default: 'employee'
         },
         nationality: {
             type: String,
