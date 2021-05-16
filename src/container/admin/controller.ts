@@ -11,4 +11,13 @@ const getAllAdmin = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
-export default { getAllAdmin };
+const updateInformation = async (req: Request, res: Response) => {
+    /**
+     * Takes in an Object
+     *  @param { request body -> see Admin Model for full description}
+     */
+    let result: object = await adminService.updateInformation(req.body, req.params.id);
+    sendResponse(res, result);
+};
+
+export default { getAllAdmin, updateInformation };

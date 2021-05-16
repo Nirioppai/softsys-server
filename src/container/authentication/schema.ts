@@ -55,10 +55,15 @@ const role = Joi.string()
     .required()
     .messages(messageBuilder({ field: 'Role' }));
 
-const permission = Joi.array()
+const permissions = Joi.array()
     .items(Joi.string())
     .required()
     .messages(messageBuilder({ field: 'Permission' }));
+
+const nationality = Joi.string()
+    .allow('')
+    .required()
+    .messages(messageBuilder({ field: 'Nationality' }));
 
 const address = Joi.object()
     .keys({
@@ -100,11 +105,12 @@ const registerSchema = Joi.object()
         contactNumber,
         adminId,
         name,
+        nationality,
         homeAddress: address.messages(messageBuilder({ field: 'Home Address' })),
         currentAddress: address.messages(messageBuilder({ field: 'Current Address' })),
         permanentAddress: address.messages(messageBuilder({ field: 'Permanent Address' })),
         role,
-        permission
+        permissions
     })
     .messages(messageBuilder({ field: '' }));
 
@@ -151,4 +157,4 @@ const validateLogin = (role: String) => {
     };
 };
 
-export { registerSchema, validateRegister, validateLogin };
+export { registerSchema, validateRegister, validateLogin, adminId, employeeId, name, address, password, nationality, permissions, role, contactNumber };
