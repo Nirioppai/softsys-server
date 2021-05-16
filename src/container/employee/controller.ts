@@ -1,16 +1,14 @@
 import { Request, Response } from 'express';
 // models
 import EmployeeService from './service';
+// utilities
+import { sendResponse } from '../../_common/response';
 
 const employeeService = new EmployeeService();
 // get all admin accounts
 const getAllEmployee = async (req: Request, res: Response) => {
-    try {
-        let result: object = await employeeService.getAllEmployees();
-        res.status(200).send(result);
-    } catch (error) {
-        return res.status(400).send({ success: false, message: 'Failed to get employee accounts', deepLog: error });
-    }
+    let result: object = await employeeService.getAllEmployees();
+    sendResponse(res, result);
 };
 
 export default { getAllEmployee };

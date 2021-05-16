@@ -32,6 +32,7 @@ class AuthService {
         }
     }
     async register(userInfo: any, role: String) {
+        // define the model to be used
         this.setModel(role);
         // find for duplicate account
         let isExisting = '';
@@ -57,6 +58,8 @@ class AuthService {
     }
 
     async login(userInfo: any, role: String) {
+        // define the model to be used
+        this.setModel(role);
         // Find if account exists
         let isExisting = '';
         if (role === 'admin') {
