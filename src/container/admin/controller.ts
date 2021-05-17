@@ -25,4 +25,13 @@ const updateInformation = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
-export default { getAllAdmin, updateInformation, getOneAdmin };
+const updatePermissionAndRole = async (req: Request, res: Response) => {
+    /**
+     * Takes in an Object
+     *  @param { request body -> see Admin Model for full description}
+     */
+    let result: object = await adminService.updatePermissionAndRole(req.body, req.params.id);
+    sendResponse(res, result);
+};
+
+export default { getAllAdmin, updateInformation, getOneAdmin, updatePermissionAndRole };
