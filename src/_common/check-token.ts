@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
+import { removeProperty } from './removeProperty';
 
 const jwtAuth = (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.get('authorization');
@@ -28,7 +29,8 @@ const checkIfAdmin = (req: Request, res: Response, next: NextFunction) => {
     if (req.body.userInfo.type !== 'admin') {
         return res.status(403).send({ success: false, message: 'You are not authorize for this action' });
     }
-
+    // remove the appended object after the creds validation
+    req.body = removeProperty(req.body, 'userInfo');
     next();
 };
 
@@ -37,7 +39,8 @@ const checkIfEmployee = (req: Request, res: Response, next: NextFunction) => {
     if (req.body.userInfo.type !== 'employee') {
         return res.status(403).send({ success: false, message: 'You are not authorize for this action' });
     }
-
+    // remove the appended object after the creds validation
+    req.body = removeProperty(req.body, 'userInfo');
     next();
 };
 

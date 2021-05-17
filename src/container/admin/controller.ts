@@ -11,4 +11,18 @@ const getAllAdmin = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
-export default { getAllAdmin };
+const getOneAdmin = async (req: Request, res: Response) => {
+    let result: object = await adminService.getOneAdmin(req.params.id);
+    sendResponse(res, result);
+};
+
+const updateInformation = async (req: Request, res: Response) => {
+    /**
+     * Takes in an Object
+     *  @param { request body -> see Admin Model for full description}
+     */
+    let result: object = await adminService.updateInformation(req.body, req.params.id);
+    sendResponse(res, result);
+};
+
+export default { getAllAdmin, updateInformation, getOneAdmin };
