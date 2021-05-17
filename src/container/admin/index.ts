@@ -1,6 +1,6 @@
 import AdminModel from './model';
 import AdminController from './controller';
 import AdminService from './service';
-import { validateUpdate } from './schema';
+import { validateUpdate, validateUpdatePermissionAndRole } from './schema';
 
-export { AdminController, AdminModel, AdminService, validateUpdate };
+export { AdminController, AdminModel, AdminService, validateUpdate, validateUpdatePermissionAndRole };

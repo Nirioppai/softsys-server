@@ -19,9 +19,13 @@ const jwtAuth = (req: Request, res: Response, next: NextFunction) => {
         const decodedInfo = decoded;
         // append decoded info to the request body for other middleware usages
         req.body = { ...req.body, userInfo: decodedInfo };
-
         next();
     });
+};
+
+const checkAccess = (req: Request, res: Response, next: NextFunction) => {
+    console.log(req.body);
+    next();
 };
 
 const checkIfAdmin = (req: Request, res: Response, next: NextFunction) => {
@@ -44,4 +48,4 @@ const checkIfEmployee = (req: Request, res: Response, next: NextFunction) => {
     next();
 };
 
-export { jwtAuth, checkIfAdmin, checkIfEmployee };
+export { jwtAuth, checkIfAdmin, checkIfEmployee, checkAccess };
