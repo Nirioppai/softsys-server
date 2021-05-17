@@ -10,6 +10,23 @@ const getAllAdmin = async (req: Request, res: Response) => {
     let result: object = await adminService.getAllAdmins();
     sendResponse(res, result);
 };
+// DELETE Admin
+const deleteAdmin = async (req: Request, res: Response) => {
+    const adminId: string = req.params.adminId;
+    let result: object = await adminService.adminDelete(adminId);
+    sendResponse(res, result);
+};
+// GET All Permissions
+const getAllPermission = async (req: Request, res: Response) => {
+    let result: object = await adminService.getAllPermissions();
+    sendResponse(res, result);
+};
+// GET One Permissions
+const getOnePermission = async (req: Request, res: Response) => {
+    const permission: string = req.params.permission;
+    let result: object = await adminService.getOnePermissions(permission);
+    sendResponse(res, result);
+};
 
 const getOneAdmin = async (req: Request, res: Response) => {
     let result: object = await adminService.getOneAdmin(req.params.id);
@@ -34,4 +51,5 @@ const updatePermissionAndRole = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
-export default { getAllAdmin, updateInformation, getOneAdmin, updatePermissionAndRole };
+export default { getAllAdmin, updateInformation, getOneAdmin, updatePermissionAndRole, getAllPermission, getOnePermission, deleteAdmin };
+
