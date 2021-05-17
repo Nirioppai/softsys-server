@@ -70,3 +70,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDlmOGVmN
     "role": "Test"
 }
 
+###
+
+// GET All Admin Permissions 
+DELETE http://localhost:5000/api/admin/get-all-permissions/:id
+Content-Type: application/json
+Authorization:
+
+###
+
+// GET One Admin Permission
+DELETE http://localhost:5000/api/admin/get-one-permission/:id/:permissionId
+Content-Type: application/json
+Authorization:
