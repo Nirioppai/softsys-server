@@ -10,21 +10,6 @@ DELETE http://localhost:5000/api/admin/delete/:adminId
 Content-Type: application/json
 Authorization:
 
-###
-
-// GET All Permissions
-DELETE http://localhost:5000/api/admin/get-all-permissions
-Content-Type: application/json
-Authorization:
-
-
-###
-
-// GET One Permission
-DELETE http://localhost:5000/api/admin/get-one-permission
-Content-Type: application/json
-Authorization:
-
 
 ###
 

@@ -9,6 +9,7 @@ import seedRoutes from './container/seeds/routers';
 import adminRoutes from './container/admin/routers';
 import employeeRoutes from './container/employee/routers';
 import employeeInformationRoutes from './container/employeeInformation/routers';
+import permissionRoutes from './container/permissions/routers';
 
 // require database configs and dotenv to allow the use or env variables
 require('dotenv').config();
@@ -28,6 +29,7 @@ app.use('/api/seeds', seedRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/employee', employeeRoutes);
 app.use('/api/employeeInformation', employeeInformationRoutes);
+app.use('/api/permission', permissionRoutes);
 
 // start the app
 const port = process.env.PORT || 5000;

@@ -44,16 +44,4 @@ router.put('/update/permission-role/:id', [jwtAuth, checkAccess, checkIfAdmin, v
  */
 router.delete('/delete/:adminId', [jwtAuth, checkIfAdmin], AdminController.deleteAdmin);
 
-/**
- * GET All Permissions
- *
- */
-router.get('/get-all-permissions', [jwtAuth, checkIfAdmin], AdminController.getAllPermission);
-
-/**
- * GET One Permissions
- *
- */
-router.get('/get-one-permission/:permission', [jwtAuth, checkIfAdmin], AdminController.getOnePermission);
-
 export = router;
