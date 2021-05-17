@@ -16,4 +16,22 @@ const router = express.Router();
  */
 router.get('/get-all', [jwtAuth, checkIfAdmin], AdminController.getAllAdmin);
 
+/**
+ * DELETE Admin
+ *
+ */
+router.delete('/delete/:adminId', [jwtAuth, checkIfAdmin], AdminController.deleteAdmin);
+
+/**
+ * GET All Permissions
+ *
+ */
+router.get('/get-all-permissions', [jwtAuth, checkIfAdmin], AdminController.getAllPermission);
+
+/**
+ * GET One Permissions
+ *
+ */
+router.get('/get-one-permission/:permission', [jwtAuth, checkIfAdmin], AdminController.getOnePermission);
+
 export = router;
