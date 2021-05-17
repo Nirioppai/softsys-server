@@ -13,8 +13,8 @@ const getAllPermission = async (req: Request, res: Response) => {
 };
 // GET One Permissions
 const getOnePermission = async (req: Request, res: Response) => {
-    const permission: string = req.params.permission;
-    let result: object = await permissionService.getOnePermissions(permission);
+    const _id: string = req.params.id;
+    let result: object = await permissionService.getOnePermissions(_id);
     sendResponse(res, result);
 };
 
