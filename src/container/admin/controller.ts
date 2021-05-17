@@ -28,4 +28,28 @@ const getOnePermission = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
-export default { getAllAdmin, deleteAdmin, getAllPermission, getOnePermission };
+const getOneAdmin = async (req: Request, res: Response) => {
+    let result: object = await adminService.getOneAdmin(req.params.id);
+    sendResponse(res, result);
+};
+
+const updateInformation = async (req: Request, res: Response) => {
+    /**
+     * Takes in an Object
+     *  @param { request body -> see Admin Model for full description}
+     */
+    let result: object = await adminService.updateInformation(req.body, req.params.id);
+    sendResponse(res, result);
+};
+
+const updatePermissionAndRole = async (req: Request, res: Response) => {
+    /**
+     * Takes in an Object
+     *  @param { request body -> see Admin Model for full description}
+     */
+    let result: object = await adminService.updatePermissionAndRole(req.body, req.params.id);
+    sendResponse(res, result);
+};
+
+export default { getAllAdmin, updateInformation, getOneAdmin, updatePermissionAndRole, getAllPermission, getOnePermission, deleteAdmin };
+
