@@ -14,10 +14,18 @@ const router = express.Router();
 
 /**
  * Route to get all administrator
- * @param { email, password } req
+ * @param { token, type } req
  *
  */
 router.get('/get-all', [jwtAuth, checkIfAdmin], AdminController.getAllAdmin);
+
+/**
+ * Route to get one administrator
+ * @param { req.param.id } req
+ *
+ */
+router.get('/:id', [jwtAuth, checkIfAdmin], AdminController.getOneAdmin);
+
 /**
  *  Route to edit administrator information
  *  @params { adminId, name, gender, date of birth, nationality, contact number, home address, current and permanent address }

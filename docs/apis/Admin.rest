@@ -3,6 +3,13 @@ GET http://localhost:5000/api/admin/get-all
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDlmOGVmNzU1MjM5ZTMyNjQ2YTgzNDYiLCJhZG1pbklkIjoiMjAyMS0wMDAyIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IiIsInBlcm1pc3Npb25zIjpbXSwiaWF0IjoxNjIxMDY5NjAxLCJleHAiOjE2MjE2NzQ0MDF9.-p281PVFs2WaFdNMyp9mM5O1eYXxmUYpcr146YxZ8u4
 
+###
+
+// please replace the :id with your database _id value eg. 60a0a43f615c1c0cf0d15429
+GET http://localhost:5000/api/admin/:id
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDlmOGVmNzU1MjM5ZTMyNjQ2YTgzNDYiLCJhZG1pbklkIjoiMjAyMS0wMDAyIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IiIsInBlcm1pc3Npb25zIjpbXSwiaWF0IjoxNjIxMDY5NjAxLCJleHAiOjE2MjE2NzQ0MDF9.-p281PVFs2WaFdNMyp9mM5O1eYXxmUYpcr146YxZ8u4
+
 
 ###
 

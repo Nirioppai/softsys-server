@@ -21,6 +21,17 @@ class AdminService {
         }
     }
 
+    async getOneAdmin(_id: string) {
+        // find account from id and check if it exist
+        try {
+            const isExisting = await this.model.findById({ _id });
+            if (isExisting === null) return { success: false, message: 'Profile does not exist', code: 400 };
+            return { success: true, data: isExisting, code: 200 };
+        } catch (error) {
+            return { success: false, message: 'Failed to get admin account', deepLog: error, code: 400 };
+        }
+    }
+
     async updateInformation(adminInfo: object, _id: string) {
         try {
             // find account from id and check if it exist
@@ -31,7 +42,7 @@ class AdminService {
 
             return { success: true, code: 200, message: 'Profile information is updated successfully' };
         } catch (error) {
-            return { success: false, message: 'Failed to update admin account', deepLog: error, code: 400 };
+            return { success: false, message: 'Failed to update admin accounts', deepLog: error, code: 400 };
         }
     }
 }
