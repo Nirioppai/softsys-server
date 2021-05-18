@@ -9,6 +9,6 @@ Authorization:
 ###
 
 // GET One Permission
-DELETE http://localhost:5000/api/admin/get-one-permission/:permissionName
+DELETE http://localhost:5000/api/admin/get-one-permission/:id
 Content-Type: application/json
 Authorization:

@@ -22,15 +22,15 @@ class AdminService {
         }
     }
 
-    async adminDelete(adminId: string) {
+    async adminDelete(_id: string) {
         // Check if Admin Exists
-        let isExisting = await AdminModel.find({ adminId });
+        let isExisting = await this.model.findById({ _id });
         // Return if does not Exist
-        if (isExisting.length === 0) return { success: false, message: 'Admin does not exist', code: 400 };
+        if (isExisting === null) return { success: false, message: 'Admin does not exist', code: 400 };
 
         try {
             // Delete Admin
-            await AdminModel.deleteOne({ adminId });
+            await this.model.deleteOne({ _id });
 
             return { success: true, message: 'Admin Deleted ', code: 201 };
         } catch (error) {
@@ -38,31 +38,62 @@ class AdminService {
         }
     }
 
-    async getAllPermissions() {
+    async getAllPermission(_id: string) {
         try {
             // GETS All Permissions
-            const permissions = await PermissionSchema.find();
-            return { success: true, data: permissions, code: 200 };
+            let adminPermissions: any = await this.model.findById({ _id });
+            // If Admin has no permissions
+            if (adminPermissions.permissions.length === 0) return { success: true, data: [], message: 'This Admin has No Permissions', code: 200 };
+
+            let permissionList: any = [];
+
+            for (let i = 0; i < adminPermissions.permissions.length; i++) {
+                let item: any = await PermissionSchema.findById({ _id: adminPermissions.permissions[i] }, { name: 1, description: 1 });
+                permissionList.push(item);
+            }
+
+            return { success: true, data: permissionList, code: 200 };
         } catch (error) {
-            return { success: false, message: 'Failed to GET All Permissions', deepLog: error, code: 400 };
+            return { success: false, message: 'Failed to GET All Admin Permissions', deepLog: error, code: 400 };
         }
     }
 
-    async getOnePermissions(permission: string) {
+    async getOnePermissions(_id: string, permission: string) {
+        // Check if Admin exist
+        let adminIsExisting = await this.model.findById({ _id });
+        // Return if Admin does not exist
+        if (adminIsExisting === null) return { success: false, message: 'Admin does not exist', code: 400 };
         // Check if Permission exist
-        let isExisting = await PermissionSchema.find({ name: permission });
+        let isExisting = await PermissionSchema.findById({ _id: permission });
         // Return if Permission does not exist
-        if (isExisting.length === 0) return { success: false, message: 'Permission does not exist', code: 400 };
+        if (isExisting === null) return { success: false, message: 'Permission does not exist', code: 400 };
 
         try {
+            // If Admin has no permissions
+            if (adminIsExisting.permissions.length === 0) return { success: true, data: [], message: 'This Admin has No Permissions', code: 200 };
+
             // GET Selected Permission
-            const getPermission = await PermissionSchema.find({ name: permission });
-            return { success: true, data: getPermission, code: 200 };
+            let adminPermissions: any = await this.model.findById({ _id });
+
+            let permissionItem: any = '';
+
+            for (let i = 0; i < adminPermissions.permissions.length; i++) {
+                let item: any = await PermissionSchema.findById({ _id: adminPermissions.permissions[i] }, { name: 1, description: 1 });
+
+                if (permission == item._id) {
+                    permissionItem = item;
+                    break;
+                }
+
+                if (i === adminPermissions.permissions.length - 1) return { success: true, data: [], message: 'Permission Not Found', code: 200 };
+            }
+
+            return { success: true, data: permissionItem, code: 200 };
         } catch (error) {
-            return { success: false, message: 'Failed to get admin account', deepLog: error, code: 400 };
-        }  
+            return { success: false, message: 'Failed to GET Admin Permission', deepLog: error, code: 400 };
+        }
     }
-  
+
     async getOneAdmin(_id: string) {
         // find account from id and check if it exist
         try {

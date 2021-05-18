@@ -12,8 +12,8 @@ const getAllAdmin = async (req: Request, res: Response) => {
 };
 // DELETE Admin
 const deleteAdmin = async (req: Request, res: Response) => {
-    const adminId: string = req.params.adminId;
-    let result: object = await adminService.adminDelete(adminId);
+    const _id: string = req.params.id;
+    let result: object = await adminService.adminDelete(_id);
     sendResponse(res, result);
 };
 
@@ -40,4 +40,23 @@ const updatePermissionAndRole = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
-export default { getAllAdmin, updateInformation, getOneAdmin, updatePermissionAndRole, deleteAdmin };
+const getAllPermissions = async (req: Request, res: Response) => {
+    /**
+     * Takes in an Object
+     *  @param { request body -> see Admin Model for full description}
+     */
+    const _id = req.params.id;
+    let result: object = await adminService.getAllPermission(_id);
+    sendResponse(res, result);
+};
+
+const getOnePermission = async (req: Request, res: Response) => {
+    /**
+     * Takes in an Object
+     *  @param { request body -> see Admin Model for full description}
+     */
+    let result: object = await adminService.getOnePermissions(req.params.id, req.params.permission);
+    sendResponse(res, result);
+};
+
+export default { getAllAdmin, updateInformation, getOneAdmin, updatePermissionAndRole, deleteAdmin, getAllPermissions, getOnePermission };

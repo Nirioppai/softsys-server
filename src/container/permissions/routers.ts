@@ -24,6 +24,6 @@ router.get('/get-all-permissions', [jwtAuth, checkIfAdmin], PermissionController
  * GET One Permissions
  *
  */
-router.get('/get-one-permission/:permission', [jwtAuth, checkIfAdmin], PermissionController.getOnePermission);
+router.get('/get-one-permission/:id', [jwtAuth, checkIfAdmin], PermissionController.getOnePermission);
 
 export = router;
