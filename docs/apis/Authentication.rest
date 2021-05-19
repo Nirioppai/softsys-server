@@ -12,7 +12,7 @@ Content-Type: application/json
         "title": ""
     },
     "contactNumber": {
-        "mobileNumber": [],
+        "mobileNumber": ["09503141412"],
         "landLineNumber": []
     },
     "homeAddress": {
@@ -40,7 +40,8 @@ Content-Type: application/json
         "country": ""
     },
     "role": "",
-    "permission": []
+    "permissions": [],
+    "nationality": ""
 }
 
 

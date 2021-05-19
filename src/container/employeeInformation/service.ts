@@ -23,6 +23,7 @@ class EmployeeInformationService {
     async addEmployeeInformations(information: object) {
         try {
             const employeeInformation = new EmployeeInformationModel(information);
+            console.log(information);
             await employeeInformation.save();
             return { success: true, data: employeeInformation, code: 200 };
         } catch (error) {

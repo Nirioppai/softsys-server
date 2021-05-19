@@ -1,5 +1,5 @@
 import express from 'express';
-import { EmployeeInformationController } from './index';
+import { EmployeeInformationController, validation } from './index';
 import { jwtAuth, checkIfAdmin } from '../../_common/check-token';
 
 const router = express.Router();
@@ -26,7 +26,7 @@ router.get('/:id', [jwtAuth], EmployeeInformationController.getEmployeeInformati
  * @param {  } req
  *
  */
-router.post('/', [jwtAuth], EmployeeInformationController.addEmployeeInformation);
+router.post('/', [jwtAuth, validation()], EmployeeInformationController.addEmployeeInformation);
 /**
  * Route to update employeeInformation
  * @param {  } req
