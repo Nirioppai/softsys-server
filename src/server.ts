@@ -28,7 +28,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/seeds', seedRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/employee', employeeRoutes);
-app.use('/api/employeeInformation', employeeInformationRoutes);
+app.use('/api/employeeInformations', employeeInformationRoutes);
 app.use('/api/permission', permissionRoutes);
 
 // start the app

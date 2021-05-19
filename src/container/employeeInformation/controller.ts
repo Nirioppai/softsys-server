@@ -17,12 +17,12 @@ const getEmployeeInformation = async (req: Request, res: Response) => {
 };
 // add employee information
 const addEmployeeInformation = async (req: Request, res: Response) => {
-    let result: object = await employeeInformationService.addEmployeeInformations(req.body);
+    let result: object = await employeeInformationService.addEmployeeInformations(req.body, req.body.employee);
     sendResponse(res, result);
 };
 // update employee information
 const updateEmployeeInformation = async (req: Request, res: Response) => {
-    let result: object = await employeeInformationService.updateEmployeeInformations(req.params.id, req.body);
+    let result: object = await employeeInformationService.updateEmployeeInformations(req.params.id, req.body, req.body.employee);
     sendResponse(res, result);
 };
 // delete employee information
