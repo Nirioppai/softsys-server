@@ -11,9 +11,33 @@ const router = express.Router();
 
 /**
  * Route to get all employeeInformation
- * @param { email, password } req
+ * @param { } req
  *
  */
-router.get('/get-all', [jwtAuth, checkIfAdmin], EmployeeInformationController.getAllEmployeeInformation);
+router.get('/', [jwtAuth], EmployeeInformationController.getAllEmployeeInformation);
+/**
+ * Route to get all employeeInformation
+ * @param { } req
+ *
+ */
+router.get('/:id', [jwtAuth], EmployeeInformationController.getEmployeeInformation);
+/**
+ * Route to add employeeInformation
+ * @param {  } req
+ *
+ */
+router.post('/', [jwtAuth], EmployeeInformationController.addEmployeeInformation);
+/**
+ * Route to update employeeInformation
+ * @param {  } req
+ *
+ */
+router.patch('/:id', [jwtAuth], EmployeeInformationController.updateEmployeeInformation);
+/**
+ * Route to delete employeeInformation
+ * @param {  } req
+ *
+ */
+router.delete('/:id', [jwtAuth], EmployeeInformationController.deleteEmployeeInformation);
 
 export = router;
