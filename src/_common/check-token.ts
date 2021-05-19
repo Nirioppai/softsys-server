@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import { removeProperty } from './removeProperty';
+import { PermissionSchema } from '../container/permissions';
 
 const jwtAuth = (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.get('authorization');
@@ -23,9 +24,30 @@ const jwtAuth = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-const checkAccess = (req: Request, res: Response, next: NextFunction) => {
-    console.log(req.body);
-    next();
+const checkAccess = (scope: string) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
+        let userPermissionsIds: Array<String> = [];
+        let permissionNames: Array<String> = [];
+        userPermissionsIds = req.body.userInfo.permissions;
+        // this query will allow you to pass in an array of object ids and will return an array of object that matches the find
+        const permissions = await PermissionSchema.find({ _id: { $in: userPermissionsIds } });
+
+        for (var i = 0; i < permissions.length; i++) {
+            permissionNames.push(permissions[i].name);
+        }
+
+        if (!permissionNames.includes(scope)) {
+            return res.status(403).send({ success: false, message: 'You do not have a permission for this module' });
+        }
+
+        /**
+         *  Todo: Check if there is a role,
+         *  If Role exist check the permission of that role,
+         *  If Not check permission directly
+         */
+
+        next();
+    };
 };
 
 const checkIfAdmin = (req: Request, res: Response, next: NextFunction) => {
