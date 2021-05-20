@@ -10,6 +10,7 @@ import adminRoutes from './container/admin/routers';
 import employeeRoutes from './container/employee/routers';
 import employeeInformationRoutes from './container/employeeInformation/routers';
 import permissionRoutes from './container/permissions/routers';
+import roleRoutes from './container/roles/routers';
 
 // require database configs and dotenv to allow the use or env variables
 require('dotenv').config();
@@ -30,10 +31,11 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/employee', employeeRoutes);
 app.use('/api/employeeInformation', employeeInformationRoutes);
 app.use('/api/permission', permissionRoutes);
+app.use('/api/role', roleRoutes);
 
 // start the app
 const port = process.env.PORT || 5000;
 server.listen(port, () => {
-    console.log('Stack HRIS-ATTENDANCE Server \n');
+    console.log('HRIS-ATTENDANCE Server \n');
     console.log('Server started on port ' + port);
 });
