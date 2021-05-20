@@ -1,0 +1,4 @@
+// Employee GET all acounts api
+GET http://localhost:5000/api/employee/get-all
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDlmOGVmNzU1MjM5ZTMyNjQ2YTgzNDYiLCJhZG1pbklkIjoiMjAyMS0wMDAyIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IiIsInBlcm1pc3Npb25zIjpbXSwiaWF0IjoxNjIxMDY5NjAxLCJleHAiOjE2MjE2NzQ0MDF9.-p281PVFs2WaFdNMyp9mM5O1eYXxmUYpcr146YxZ8u4

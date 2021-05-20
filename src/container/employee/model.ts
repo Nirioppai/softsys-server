@@ -70,10 +70,6 @@ const EmployeeSchema: Schema = new Schema(
         password: {
             type: String,
             required: true
-        },
-        employeeInformation: {
-            type: Schema.Types.ObjectId,
-            ref: 'EmployeeInformation'
         }
     },
     {

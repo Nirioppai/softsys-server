@@ -1,5 +1,5 @@
 import express from 'express';
-import { EmployeeInformationController } from './index';
+import { EmployeeInformationController, validation } from './index';
 import { jwtAuth, checkIfAdmin } from '../../_common/check-token';
 
 const router = express.Router();
@@ -11,9 +11,37 @@ const router = express.Router();
 
 /**
  * Route to get all employeeInformation
- * @param { email, password } req
+ * @param { } req
  *
  */
-router.get('/get-all', [jwtAuth, checkIfAdmin], EmployeeInformationController.getAllEmployeeInformation);
+router.get('/', [jwtAuth, checkIfAdmin], EmployeeInformationController.getAllEmployeeInformation);
+
+/**
+ * Route to get one employeeInformation
+ * @param { } req
+ *
+ */
+router.get('/:id', [jwtAuth, checkIfAdmin], EmployeeInformationController.getEmployeeInformation);
+
+/**
+ * Route to add employeeInformation
+ * @param {  } req
+ *
+ */
+router.post('/', [jwtAuth, checkIfAdmin, validation()], EmployeeInformationController.addEmployeeInformation);
+
+/**
+ * Route to update employeeInformation
+ * @param {  } req
+ *
+ */
+router.patch('/:id', [jwtAuth, checkIfAdmin, validation()], EmployeeInformationController.updateEmployeeInformation);
+
+/**
+ * Route to delete employeeInformation
+ * @param {  } req
+ *
+ */
+router.delete('/:id', [jwtAuth, checkIfAdmin], EmployeeInformationController.deleteEmployeeInformation);
 
 export = router;

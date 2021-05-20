@@ -1,5 +1,6 @@
 import { Document } from 'mongoose';
 export default interface IEmployee extends Document {
+    employee: String;
     employment: {
         classification: String;
         tenureShip: String;
@@ -37,5 +38,4 @@ export default interface IEmployee extends Document {
         email2: String;
     };
     religion: String;
-    nationality: String;
 }

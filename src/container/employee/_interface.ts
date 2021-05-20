@@ -48,5 +48,4 @@ export default interface IEmployee extends Document {
     nationality: String;
     isActive: Boolean;
     password: String;
-    employeeInformation: String;
 }
