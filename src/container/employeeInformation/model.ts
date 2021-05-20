@@ -2,6 +2,10 @@ import mongoose, { Schema } from 'mongoose';
 import IEmployeeInformation from './_interface';
 
 const EmployeeInformationSchema: Schema = new Schema({
+    employee: {
+        type: Schema.Types.ObjectId,
+        ref: 'Employee'
+    },
     employment: {
         classification: {
             type: String
@@ -92,9 +96,6 @@ const EmployeeInformationSchema: Schema = new Schema({
         }
     },
     religion: {
-        type: String
-    },
-    nationality: {
         type: String
     }
 });
