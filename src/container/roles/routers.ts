@@ -21,4 +21,10 @@ router.get('/get-all-roles', [jwtAuth, checkAccess(['Role:Read']), checkIfAdmin]
  */
 router.get('/get-one-role/:id', [jwtAuth, checkAccess(['Role:Read']), checkIfAdmin], RoleController.getOneRole);
 
+/**
+ * GET One Role
+ *
+ */
+router.post('/create', [jwtAuth, checkAccess(['Role:Create']), checkIfAdmin], RoleController.createRole);
+
 export = router;

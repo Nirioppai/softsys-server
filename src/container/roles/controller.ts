@@ -18,4 +18,10 @@ const getOneRole = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
-export default { getAllRoles, getOneRole };
+const createRole = async (req: Request, res: Response) => {
+    const body = req.body;
+    let result: object = await roleService.createNewRole(body);
+    sendResponse(res, result);
+};
+
+export default { getAllRoles, getOneRole, createRole };

@@ -13,9 +13,6 @@ class RoleService {
         try {
             // GETS All Permissions
             const permissions = await RoleSchema.find({}, { name: 1, description: 1 });
-
-            if (permissions.length === 0) return { success: true, message: 'No roles existing', code: 200 };
-
             return { success: true, data: permissions, code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to get all role', deepLog: error, code: 400 };
