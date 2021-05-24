@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import { removeProperty } from './removeProperty';
 import { PermissionSchema } from '../container/permissions';
+import { RoleSchema } from '../container/roles';
 
 const jwtAuth = (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.get('authorization');
@@ -24,29 +25,38 @@ const jwtAuth = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-const checkAccess = (scope: string) => {
+const checkAccess = (scopes: Array<String>) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         let userPermissionsIds: Array<String> = [];
-        let permissionNames: Array<String> = [];
+        let userRole: string;
+
         userPermissionsIds = req.body.userInfo.permissions;
+        userRole = req.body.userInfo.role;
+
+        let permissionNames: Array<String> = [];
+
         // this query will allow you to pass in an array of object ids and will return an array of object that matches the find
         const permissions = await PermissionSchema.find({ _id: { $in: userPermissionsIds } });
+        const roles = await RoleSchema.find({ name: userRole });
 
-        for (var i = 0; i < permissions.length; i++) {
+        for (let i in permissions) {
             permissionNames.push(permissions[i].name);
         }
 
-        if (!permissionNames.includes(scope)) {
-            return res.status(403).send({ success: false, message: 'You do not have a permission for this module' });
+        for (let i in roles) {
+            permissionNames.push(...roles[i].permissions);
         }
 
-        /**
-         *  Todo: Check if there is a role,
-         *  If Role exist check the permission of that role,
-         *  If Not check permission directly
-         */
+        let found: boolean = true;
+        for (let i in scopes) {
+            if (!permissionNames.includes(scopes[i])) {
+                found = false;
+                res.status(403).send({ success: false, message: 'You do not have a permission for this module' });
+                break;
+            }
+        }
 
-        next();
+        found && next();
     };
 };
 

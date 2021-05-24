@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import AdminSeed from './adminSeed';
 import EmployeeSeed from './employeeSeed';
 import PermissionSeed from './permissionSeed';
+import SuperAdminSeed from './superAdminSeed';
 
 // register a user in
 const adminSeed = async (req: Request, res: Response) => {
@@ -19,12 +20,17 @@ const permissionSeed = async (req: Request, res: Response) => {
     res.status(200).send(result);
 };
 
+const superAdminSeed = async (req: Request, res: Response) => {
+    const result: any = await SuperAdminSeed();
+    res.status(200).send(result);
+};
+
 const seedAll = async (req: Request, res: Response) => {
     await AdminSeed();
     await EmployeeSeed();
     await PermissionSeed();
-
+    await SuperAdminSeed();
     res.status(200).send({ success: true, message: 'All data has been successfully seeded . . . ' });
 };
 
-export { adminSeed, employeeSeed, permissionSeed, seedAll };
+export { adminSeed, employeeSeed, permissionSeed, seedAll, superAdminSeed };

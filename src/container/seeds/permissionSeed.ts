@@ -1,6 +1,6 @@
 import { PermissionSchema } from '../permissions/index';
 
-const modules = ['Admin', 'Employee', 'Permissions', 'Auth'];
+const modules = ['Admin', 'Employee', 'Permissions', 'Auth', 'Role'];
 
 const actions = ['Read', 'Create', 'Update', 'Delete'];
 

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
 import { messageBuilder, cleaner } from '../../_common/messages';
-import { contactNumber, adminId, nationality, address, permissions, role } from '../authentication/schema';
+import { contactNumber, adminId, nationality, address, permissions, role } from '../authentication/validation';
 
 const updateSchema = Joi.object()
     .keys({
