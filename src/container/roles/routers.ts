@@ -1,5 +1,5 @@
 import express from 'express';
-import { RoleController } from './index';
+import { RoleController, validateCreate } from './index';
 import { jwtAuth, checkIfAdmin, checkAccess } from '../../_common/check-token';
 
 const router = express.Router();
@@ -22,9 +22,19 @@ router.get('/get-all-roles', [jwtAuth, checkAccess(['Role:Read']), checkIfAdmin]
 router.get('/get-one-role/:id', [jwtAuth, checkAccess(['Role:Read']), checkIfAdmin], RoleController.getOneRole);
 
 /**
- * GET One Role
+ * POST One Role
  *
  */
-router.post('/create', [jwtAuth, checkAccess(['Role:Create']), checkIfAdmin], RoleController.createRole);
+router.post('/create', [jwtAuth, checkAccess(['Role:Read', 'Role:Create']), checkIfAdmin, validateCreate()], RoleController.createRole);
+
+/**
+ *  PUT One Role
+ */
+router.put('/update/:id', [jwtAuth, checkAccess(['Role:Read', 'Role:Update']), checkIfAdmin, validateCreate()], RoleController.updateRole);
+
+/**
+ * DELETE One Role
+ */
+router.delete('/delete/:id', [jwtAuth, checkAccess(['Role:Read', 'Role:Update']), checkIfAdmin], RoleController.deleteOneRole);
 
 export = router;

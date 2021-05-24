@@ -24,4 +24,17 @@ const createRole = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
-export default { getAllRoles, getOneRole, createRole };
+const updateRole = async (req: Request, res: Response) => {
+    const body = req.body;
+    const _id = req.params.id;
+    let result: object = await roleService.updateRole(_id, body);
+    sendResponse(res, result);
+};
+
+const deleteOneRole = async (req: Request, res: Response) => {
+    const _id = req.params.id;
+    let result: object = await roleService.deleteRole(_id);
+    sendResponse(res, result);
+};
+
+export default { getAllRoles, getOneRole, createRole, updateRole, deleteOneRole };
