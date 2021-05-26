@@ -37,4 +37,9 @@ const deleteOneRole = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
-export default { getAllRoles, getOneRole, createRole, updateRole, deleteOneRole };
+const deleteManyRole = async (req: Request, res: Response) => {
+    let result: object = await roleService.deleteManyRole(req.body.roles);
+    sendResponse(res, result);
+};
+
+export default { getAllRoles, getOneRole, createRole, updateRole, deleteOneRole, deleteManyRole };

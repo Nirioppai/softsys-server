@@ -21,6 +21,12 @@ const updatePermissionAndRole = Joi.object()
     })
     .messages(messageBuilder({ field: '' }));
 
+const idsToBeDelete = Joi.object().keys({
+    // since permissions is an array of string
+    // we will use this type to set it as the type or the roles
+    ids: permissions.messages(messageBuilder({ field: 'Admin Ids' }))
+});
+
 const validateUpdate = () => {
     return (req: Request, res: Response, next: NextFunction) => {
         const { error } = updateSchema.validate(req.body, { abortEarly: false });
@@ -43,4 +49,15 @@ const validateUpdatePermissionAndRole = () => {
     };
 };
 
-export { validateUpdate, validateUpdatePermissionAndRole };
+const validateIdsToBeDeleted = () => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        const { error } = idsToBeDelete.validate(req.body, { abortEarly: false });
+        if (error) {
+            const cleanError = cleaner(error);
+            return res.status(400).json(cleanError);
+        }
+        next();
+    };
+};
+
+export { validateUpdate, validateUpdatePermissionAndRole, validateIdsToBeDeleted };

@@ -1,9 +1,6 @@
 import express from 'express';
-import { AdminController } from './index';
+import { AdminController, validateUpdate, validateUpdatePermissionAndRole, validateIdsToBeDeleted } from './index';
 import { jwtAuth, checkIfAdmin, checkAccess } from '../../_common/check-token';
-
-// get the validator middleware from authentication schema
-import { validateUpdate, validateUpdatePermissionAndRole } from './index';
 
 const router = express.Router();
 
@@ -36,13 +33,19 @@ router.put('/update/:id', [jwtAuth, checkAccess(['Admin:Read', 'Admin:Update']),
  *  Route to edit administrator permissions and role
  *  @params { role, permissions }
  */
-router.put('/update/permission-role/:id', [jwtAuth, checkAccess(['Admin:Update']), validateUpdatePermissionAndRole()], AdminController.updatePermissionAndRole);
+router.put('/update/permission-role/:id', [jwtAuth, checkAccess(['Admin:Read', 'Admin:Update']), validateUpdatePermissionAndRole()], AdminController.updatePermissionAndRole);
 
 /**
  * DELETE Admin
  *
  */
-router.delete('/delete/:id', [jwtAuth, checkAccess(['Admin:Delete']), checkIfAdmin], AdminController.deleteAdmin);
+router.delete('/delete/:id', [jwtAuth, checkAccess(['Admin:Read', 'Admin:Delete']), checkIfAdmin], AdminController.deleteAdmin);
+
+/**
+ * DELETE Many Admin
+ */
+
+router.delete('/delete-many', [jwtAuth, checkAccess(['Admin:Read', 'Admin:Delete']), checkIfAdmin, validateIdsToBeDeleted()], AdminController.deleteManyAdmin);
 
 /**
  * GET All Admin Permissions

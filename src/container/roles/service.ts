@@ -79,6 +79,15 @@ class RoleService {
             return { success: true, message: 'Failed to delete role', deeplog: error, code: 400 };
         }
     }
+
+    async deleteManyRole(roles: Array<String>) {
+        try {
+            await RoleSchema.deleteMany({ _id: { $in: roles } });
+            return { success: true, message: 'Role deleted successfully', code: 200 };
+        } catch (error) {
+            return { success: true, message: 'Failed to delete role', deeplog: error, code: 400 };
+        }
+    }
 }
 
 export default RoleService;
