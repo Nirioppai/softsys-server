@@ -2,6 +2,6 @@ import IRole from './_interface';
 import RoleSchema from './model';
 import RoleController from './controller';
 import RoleService from './service';
-import { validateCreate } from './validation';
+import { validateCreate, validateDeleteMany } from './validation';
 
-export { IRole, RoleSchema, RoleController, RoleService, validateCreate };
+export { IRole, RoleSchema, RoleController, RoleService, validateCreate, validateDeleteMany };

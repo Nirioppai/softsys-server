@@ -1,5 +1,5 @@
 import express from 'express';
-import { RoleController, validateCreate } from './index';
+import { RoleController, validateCreate, validateDeleteMany } from './index';
 import { jwtAuth, checkIfAdmin, checkAccess } from '../../_common/check-token';
 
 const router = express.Router();
@@ -35,6 +35,11 @@ router.put('/update/:id', [jwtAuth, checkAccess(['Role:Read', 'Role:Update']), c
 /**
  * DELETE One Role
  */
-router.delete('/delete/:id', [jwtAuth, checkAccess(['Role:Read', 'Role:Update']), checkIfAdmin], RoleController.deleteOneRole);
+router.delete('/delete/:id', [jwtAuth, checkAccess(['Role:Read', 'Role:Delete']), checkIfAdmin], RoleController.deleteOneRole);
+
+/**
+ * DELETE Many Role
+ */
+router.delete('/delete-many', [jwtAuth, checkAccess(['Role:Read', 'Role:Delete']), checkIfAdmin, validateDeleteMany()], RoleController.deleteManyRole);
 
 export = router;
