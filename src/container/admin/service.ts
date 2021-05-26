@@ -38,6 +38,16 @@ class AdminService {
         }
     }
 
+    async deleteManyAdmin(ids: Array<String>) {
+        try {
+            // Delete Admin
+            await this.model.deleteMany({ _id: { $in: ids } });
+            return { success: true, message: 'Admins Deleted ', code: 201 };
+        } catch (error) {
+            return { success: false, message: 'Failed to DELETE Admin', deepLog: error, code: 400 };
+        }
+    }
+
     async getAllPermission(_id: string) {
         try {
             // GETS All Permissions
