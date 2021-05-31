@@ -1,0 +1,1 @@
+export { uploadManyAdminAccount } from './controller';

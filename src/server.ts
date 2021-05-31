@@ -11,6 +11,7 @@ import employeeRoutes from './container/employee/routers';
 import employeeInformationRoutes from './container/employeeInformation/routers';
 import permissionRoutes from './container/permissions/routers';
 import roleRoutes from './container/roles/routers';
+import uploadRoutes from './container/csv-uploads/routers';
 
 // require database configs and dotenv to allow the use or env variables
 require('dotenv').config();
@@ -32,6 +33,7 @@ app.use('/api/employee', employeeRoutes);
 app.use('/api/employeeInformations', employeeInformationRoutes);
 app.use('/api/permission', permissionRoutes);
 app.use('/api/role', roleRoutes);
+app.use('/api/uploads', uploadRoutes);
 
 // start the app
 const port = process.env.PORT || 5000;
