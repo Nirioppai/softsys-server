@@ -6,7 +6,8 @@ class UploadServices {
         this.model = AdminModel;
     }
 
-    async uploadManyAdminAccounts() {
+    async uploadManyAdminAccounts(accounts: Array<Object>) {
+        console.log(accounts);
         return { success: true, data: [], message: 'Admin accounts successfully uploaded' };
     }
 }

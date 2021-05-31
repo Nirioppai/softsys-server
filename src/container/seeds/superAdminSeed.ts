@@ -39,7 +39,7 @@ const SuperAdminSeed = async () => {
             homeNumOrLotNum: faker.address.streetName(),
             streetName: faker.address.streetAddress(),
             districtOrTown: faker.address.city(),
-            zipCode: faker.address.zipCode(),
+            zipCode: Math.floor(1000 + Math.random() * 9000),
             province: faker.address.cardinalDirection(),
             country: faker.address.country()
         },
@@ -47,7 +47,7 @@ const SuperAdminSeed = async () => {
             homeNumOrLotNum: faker.address.streetName(),
             streetName: faker.address.streetAddress(),
             districtOrTown: faker.address.city(),
-            zipCode: faker.address.zipCode(),
+            zipCode: Math.floor(1000 + Math.random() * 9000),
             province: faker.address.cardinalDirection(),
             country: faker.address.country()
         },
@@ -55,7 +55,7 @@ const SuperAdminSeed = async () => {
             homeNumOrLotNum: faker.address.streetName(),
             streetName: faker.address.streetAddress(),
             districtOrTown: faker.address.city(),
-            zipCode: faker.address.zipCode(),
+            zipCode: Math.floor(1000 + Math.random() * 9000),
             province: faker.address.cardinalDirection(),
             country: faker.address.country()
         },

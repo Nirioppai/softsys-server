@@ -2,7 +2,6 @@
 import express, { Application } from 'express';
 import http from 'http';
 import cors from 'cors';
-
 // routes
 import authRoutes from './container/authentication/routers';
 import seedRoutes from './container/seeds/routers';
@@ -21,7 +20,7 @@ const app: Application = express();
 const server = http.createServer(app);
 
 // use json to enable to receive and respond with json
-app.use(express.json());
+app.use(express.json({ limit: '50mb', type: 'application/json' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
