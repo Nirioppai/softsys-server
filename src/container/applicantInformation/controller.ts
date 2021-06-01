@@ -8,19 +8,19 @@ const applicantInfoService = new ApplicantInfoService();
 
 // GET All Applicant Info
 const getAllAdminInfo = async (req: Request, res: Response) => {
-    let result: object = await applicantInfoService.adminInfoGetAll();
+    let result: object = await applicantInfoService.applicantInfoGetAll();
     sendResponse(res, result);
 };
 // GET One Applicant Info
 const getOneAdminInfo = async (req: Request, res: Response) => {
     let _id: string = req.params.id;
-    let result: object = await applicantInfoService.adminInfoGetOne(_id);
+    let result: object = await applicantInfoService.applicantInfoGetOne(_id);
     sendResponse(res, result);
 };
 // Create Applicant Info
 const createAdminInfo = async (req: Request, res: Response) => {
     let body: any = req.body;
-    let result: object = await applicantInfoService.adminInfoCreate(body);
+    let result: object = await applicantInfoService.applicantInfoCreate(body);
     sendResponse(res, result);
 };
 

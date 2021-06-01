@@ -10,7 +10,7 @@ import { ApplicantInfoModel } from './index';
 class ApplicantInfoService {
     constructor() {}
 
-    async getAllApplicantInfo() {
+    async applicantInfoGetAll() {
         // Check if there is any existing applicant
         let isExisting = await ApplicantInfoModel.find();
         // Return if none
@@ -26,7 +26,7 @@ class ApplicantInfoService {
         }
     }
 
-    async getOneApplicantInfo(_id: any) {
+    async applicantInfoGetOne(_id: any) {
         // Check if there is any existing applicant
         let isExisting = await ApplicantInfoModel.findById({ _id });
         // Return if none
