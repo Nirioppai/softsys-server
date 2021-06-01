@@ -30,3 +30,5 @@ router.get('/get/:id', [jwtAuth, checkIfAdmin], ApplicantController.getOneApplic
  *
  */
 router.post('/create', [jwtAuth, checkIfAdmin, validateApplicant], ApplicantController.createApplicant);
+
+export = router;
