@@ -29,4 +29,4 @@ router.get('/get/:id', [jwtAuth, checkIfAdmin], ApplicantController.getOneApplic
  * @param { token, type } req
  *
  */
-router.post('/create', [jwtAuth, checkIfAdmin], ApplicantController.createApplicant);
+router.post('/create', [jwtAuth, checkIfAdmin, validateApplicant], ApplicantController.createApplicant);
