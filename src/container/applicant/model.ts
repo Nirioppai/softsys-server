@@ -3,10 +3,8 @@ import IApplicant from './_interface';
 
 const ApplicantSchema: Schema = new Schema({
     applicantNumber: {
-        type: String
-    },
-    applicantInfoId: {
-        type: String
+        type: String,
+        required: true
     },
     name: {
         firstName: { type: String },

@@ -1,6 +1,6 @@
 // Models
 import { ApplicantModel } from './index';
-
+import { ApplicantInfoModel } from '../applicantInformation/index';
 /**
  * Module Applicant
  * Applicant CRUD service
@@ -16,10 +16,18 @@ class ApplicantService {
         if (isExisting === null) return { success: true, message: 'There are no existing applicants', code: 200 };
 
         try {
+            let items: any = [];
             // Get All Applicants
             let applicants: any = await ApplicantModel.find();
 
-            return { successs: true, data: applicants, code: 200 };
+            for (let i = 0; i < applicants.length; i++) {
+                let applicant: any = await ApplicantModel.find({ applicantNumber: applicants[i].applicantNumber });
+                let info: any = await ApplicantInfoModel.find({ applicantNumber: applicants[i].applicantNumber }, { applicantNumber: 0 });
+                let item: any = { applicant, info };
+                items.push(item);
+            }
+
+            return { successs: true, data: items, code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to get All Applicants', deeplog: error, code: 400 };
         }
@@ -34,8 +42,10 @@ class ApplicantService {
         try {
             // Get One Applicant
             let applicant: any = await ApplicantModel.findById({ _id });
+            let info: any = await ApplicantInfoModel.find({ applicantNumber: applicant.applicantNumber }, { applicantNumber: 0 });
+            let items: any = { applicant, info };
 
-            return { successs: true, data: applicant, code: 200 };
+            return { successs: true, data: items, code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to get Applicant', deeplog: error, code: 400 };
         }
@@ -46,12 +56,18 @@ class ApplicantService {
         let isExisting = await ApplicantModel.find({ applicantNumber: applicantInfo.applicantNumber });
         // Return if none
         if (isExisting.length > 0) return { success: false, message: 'Applicant already exists', code: 400 };
+        // Check if there is any existing applicant info
+        let exists = await ApplicantInfoModel.find({ applicantNumber: applicantInfo.applicantNumber });
+        // Return if none
+        if (exists.length > 0) return { success: false, message: 'Applicant Information already exists', code: 400 };
 
         try {
             const applicant: any = new ApplicantModel(applicantInfo);
+            const info: any = new ApplicantInfoModel(applicantInfo);
             await applicant.save();
+            await info.save();
 
-            return { successs: true, data: applicant, message: 'Applicant Created', code: 200 };
+            return { successs: true, message: 'Applicant Created', code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to get All Applicants', deeplog: error, code: 400 };
         }

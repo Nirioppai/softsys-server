@@ -15,20 +15,20 @@ const router = express.Router();
  * @param { token, type } req
  *
  */
-router.get('/get-all', [jwtAuth, checkIfAdmin], ApplicantController.getAllApplicants);
+router.get('/get-all', [jwtAuth], ApplicantController.getAllApplicants);
 
 /**
  * Route to create applicant
  * @param { token, type } req
  *
  */
-router.get('/get/:id', [jwtAuth, checkIfAdmin], ApplicantController.getOneApplicant);
+router.get('/get/:id', [jwtAuth], ApplicantController.getOneApplicant);
 
 /**
- * Route to create applicantsss
+ * Route to create applicants
  * @param { token, type } req
  *
  */
-router.post('/create', [jwtAuth, checkIfAdmin, validateApplicant], ApplicantController.createApplicant);
+router.post('/create', [jwtAuth, validateApplicant()], ApplicantController.createApplicant);
 
 export = router;

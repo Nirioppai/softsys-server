@@ -2,7 +2,6 @@ import { Document } from 'mongoose';
 
 export default interface IApplicant extends Document {
     applicantNumber: String;
-    applicantInfoId: String;
     name: {
         firstName: String;
         middleName: String;

@@ -6,11 +6,6 @@ const applicantNumber = Joi.string()
     .required()
     .messages(messageBuilder({ field: 'Applicant Number' }));
 
-const applicantInfoId = Joi.string()
-    .allow('')
-    .required()
-    .messages(messageBuilder({ field: 'Applicant Information ID' }));
-
 const name = Joi.object().keys({
     firstName: Joi.string()
         .allow('')
@@ -80,15 +75,160 @@ const language = Joi.array()
     .required()
     .messages(messageBuilder({ field: 'Password' }));
 
+const careerBackground = Joi.array()
+    .items(
+        Joi.object().keys({
+            company: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Company' })),
+            companyAddress: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Company Address' })),
+            position: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Position' })),
+            yearStarted: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Year Started' })),
+            yearEnded: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Year Ended' }))
+        })
+    )
+    .allow('')
+    .messages(messageBuilder({ field: 'Career Background' }));
+
+const educationalBackground = Joi.array()
+    .items(
+        Joi.object().keys({
+            school: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'School' })),
+            schoolAddress: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'School Address' })),
+            course: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Course' })),
+            academicAward: Joi.string()
+                .allow('')
+                .messages(messageBuilder({ field: 'Academic Award' })),
+            yearStarted: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Year Started' })),
+            yearEnded: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Year Ended' }))
+        })
+    )
+    .allow('')
+    .messages(messageBuilder({ field: 'Educational Background' }));
+
+const characterReferences = Joi.array()
+    .items(
+        Joi.object().keys({
+            name: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Name' })),
+            company: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Company' })),
+            occupation: Joi.string()
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Occupation' })),
+            contact: Joi.object()
+                .keys({
+                    mobile: Joi.string()
+                        .allow('')
+                        .required()
+                        .messages(messageBuilder({ field: 'Mobile Number' })),
+                    email: Joi.string()
+                        .allow('')
+                        .required()
+                        .messages(messageBuilder({ field: 'Email' }))
+                })
+                .allow('')
+                .required()
+                .messages(messageBuilder({ field: 'Year Started' }))
+        })
+    )
+    .allow('')
+    .messages(messageBuilder({ field: 'Character References' }));
+
+const applicationStatus = Joi.string()
+    .allow('')
+    .required()
+    .messages(messageBuilder({ field: 'Application Status' }));
+
+const desiredPosition = Joi.string()
+    .allow('')
+    .required()
+    .messages(messageBuilder({ field: 'Desired Position' }));
+
+const interviewSchedule = Joi.object()
+    .keys({
+        month: Joi.string()
+            .allow('')
+            .required()
+            .messages(messageBuilder({ field: 'Month' })),
+        day: Joi.string()
+            .allow('')
+            .required()
+            .messages(messageBuilder({ field: 'Day' })),
+        year: Joi.string()
+            .allow('')
+            .required()
+            .messages(messageBuilder({ field: 'Year' }))
+    })
+    .required()
+    .messages(messageBuilder({ field: 'Interview Schedule' }));
+
+const applicantResult = Joi.string()
+    .allow('')
+    .required()
+    .messages(messageBuilder({ field: 'Applicant Result' }));
+
+const applicantRemarks = Joi.string()
+    .allow('')
+    .required()
+    .messages(messageBuilder({ field: 'Applicant Remarks' }));
+
+const fileAttachments = Joi.array()
+    .items(Joi.string())
+    .required()
+    .messages(messageBuilder({ field: 'File Attachments' }));
+
 const createSchema = Joi.object()
     .keys({
         applicantNumber,
-        applicantInfoId,
         name,
+        dateOfBirth,
         gender,
         contactNumber,
         nationality,
-        language
+        language,
+        characterReferences,
+        careerBackground,
+        educationalBackground,
+        applicationStatus,
+        desiredPosition,
+        interviewSchedule,
+        applicantResult,
+        applicantRemarks,
+        fileAttachments
     })
     .messages(messageBuilder({ field: '' }));
 
