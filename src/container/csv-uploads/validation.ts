@@ -25,16 +25,20 @@ export const validateAccounts = () => {
 export const checkDuplicated = () => {
     return (req: Request, res: Response, next: NextFunction) => {
         let accounts = req.body.accounts;
-        // this is only for deletion of my exported data from mongoDB Compass
-        for (let i in accounts) {
-            delete accounts[i]._id;
-            delete accounts[i].createdAt;
+
+        let valueArr = accounts.map(function (item: any) {
+            return item.adminId;
+        });
+
+        var sorted_arr = valueArr.slice().sort();
+        var duplicates = [];
+        for (var i = 0; i < sorted_arr.length - 1; i++) {
+            if (sorted_arr[i + 1] === sorted_arr[i]) {
+                duplicates.push(sorted_arr[i]);
+            }
         }
-        const { error } = accountsSchema.validate(accounts, { abortEarly: false });
-        if (error) {
-            const cleanError = cleaner(error);
-            return res.status(400).json(cleanError);
-        }
-        next();
+        if (duplicates) return res.status(400).json({ success: false, message: 'There are duplicated on this set', data: duplicates });
+
+        !duplicates && next();
     };
 };

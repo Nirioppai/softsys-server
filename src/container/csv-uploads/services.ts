@@ -7,7 +7,6 @@ class UploadServices {
     }
 
     async uploadManyAdminAccounts(accounts: Array<Object>) {
-        console.log(accounts);
         return { success: true, data: [], message: 'Admin accounts successfully uploaded' };
     }
 }
