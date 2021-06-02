@@ -2,6 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 import IApplicantInfo from './_interface';
 
 const ApplicantInfoSchema: Schema = new Schema({
+    applicantNumber: { type: String },
     skills: [{ type: String }],
     achievements: [{ type: String }],
     careerHighlights: [{ type: String }],

@@ -1,6 +1,7 @@
 import { Document } from 'mongoose';
 
 export default interface IApplicantInformation extends Document {
+    applicantNumber: String;
     skills: [{ type: String }];
     achievements: [{ type: String }];
     careerHighlights: [{ type: String }];
