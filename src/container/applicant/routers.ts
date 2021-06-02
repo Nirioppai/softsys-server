@@ -29,6 +29,6 @@ router.get('/get/:id', [jwtAuth], ApplicantController.getOneApplicant);
  * @param { token, type } req
  *
  */
-router.post('/create', [jwtAuth, validateApplicant()], ApplicantController.createApplicant);
+router.post('/create', [jwtAuth, checkIfAdmin, validateApplicant()], ApplicantController.createApplicant);
 
 export = router;
