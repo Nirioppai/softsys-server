@@ -133,6 +133,7 @@ const adminLoginSchema = Joi.object()
         password
     })
     .messages(messageBuilder({ field: '' }));
+
 const employeeLoginSchema = Joi.object()
     .keys({
         employeeId,
