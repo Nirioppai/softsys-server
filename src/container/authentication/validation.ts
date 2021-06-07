@@ -27,6 +27,18 @@ const contactNumber = Joi.object()
     .required()
     .messages(messageBuilder({ field: 'Contact Number' }));
 
+const dateOfBirth = Joi.object().keys({
+    day: Joi.string()
+        .required()
+        .messages(messageBuilder({ field: 'Day' })),
+    month: Joi.string()
+        .required()
+        .messages(messageBuilder({ field: 'Month' })),
+    year: Joi.string()
+        .required()
+        .messages(messageBuilder({ field: 'Year' }))
+});
+
 const name = Joi.object().keys({
     firstName: Joi.string()
         .allow('')
@@ -84,7 +96,7 @@ const address = Joi.object()
             .allow('')
             .min(4)
             .max(4)
-            .messages(messageBuilder({ field: 'Zip Code' })),
+            .messages(messageBuilder({ field: 'Zip Code', min: '4', max: '4' })),
         province: Joi.string()
             .required()
             .allow('')
@@ -106,6 +118,7 @@ const registerSchema = Joi.object()
         adminId,
         name,
         nationality,
+        dateOfBirth,
         homeAddress: address.messages(messageBuilder({ field: 'Home Address' })),
         currentAddress: address.messages(messageBuilder({ field: 'Current Address' })),
         permanentAddress: address.messages(messageBuilder({ field: 'Permanent Address' })),

@@ -2,7 +2,6 @@
 import express, { Application } from 'express';
 import http from 'http';
 import cors from 'cors';
-
 // routes
 import authRoutes from './container/authentication/routers';
 import seedRoutes from './container/seeds/routers';
@@ -12,6 +11,7 @@ import employeeRoutes from './container/employee/routers';
 import employeeInformationRoutes from './container/employeeInformation/routers';
 import permissionRoutes from './container/permissions/routers';
 import roleRoutes from './container/roles/routers';
+import uploadRoutes from './container/csv-uploads/routers';
 
 // require database configs and dotenv to allow the use or env variables
 require('dotenv').config();
@@ -21,7 +21,7 @@ const app: Application = express();
 const server = http.createServer(app);
 
 // use json to enable to receive and respond with json
-app.use(express.json());
+app.use(express.json({ limit: '50mb', type: 'application/json' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
@@ -34,6 +34,7 @@ app.use('/api/employee', employeeRoutes);
 app.use('/api/employeeInformations', employeeInformationRoutes);
 app.use('/api/permission', permissionRoutes);
 app.use('/api/role', roleRoutes);
+app.use('/api/uploads', uploadRoutes);
 
 // start the app
 const port = process.env.PORT || 5000;

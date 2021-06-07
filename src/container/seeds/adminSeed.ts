@@ -20,7 +20,7 @@ const AdminSeed = async () => {
     let adminAccounts = [];
 
     // create 10 random accounts
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 1000; i++) {
         const admins = new AdminModel({
             adminId: '2021-' + faker.datatype.number(9999),
             name: {
@@ -43,7 +43,7 @@ const AdminSeed = async () => {
                 homeNumOrLotNum: faker.address.streetName(),
                 streetName: faker.address.streetAddress(),
                 districtOrTown: faker.address.city(),
-                zipCode: faker.address.zipCode(),
+                zipCode: Math.floor(1000 + Math.random() * 9000),
                 province: faker.address.cardinalDirection(),
                 country: faker.address.country()
             },
@@ -51,7 +51,7 @@ const AdminSeed = async () => {
                 homeNumOrLotNum: faker.address.streetName(),
                 streetName: faker.address.streetAddress(),
                 districtOrTown: faker.address.city(),
-                zipCode: faker.address.zipCode(),
+                zipCode: Math.floor(1000 + Math.random() * 9000),
                 province: faker.address.cardinalDirection(),
                 country: faker.address.country()
             },
@@ -59,7 +59,7 @@ const AdminSeed = async () => {
                 homeNumOrLotNum: faker.address.streetName(),
                 streetName: faker.address.streetAddress(),
                 districtOrTown: faker.address.city(),
-                zipCode: faker.address.zipCode(),
+                zipCode: Math.floor(1000 + Math.random() * 9000),
                 province: faker.address.cardinalDirection(),
                 country: faker.address.country()
             },
