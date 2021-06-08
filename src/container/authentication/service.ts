@@ -106,7 +106,7 @@ class AuthService {
             } else {
                 userObject = [{}];
             }
-            const token = jwt.sign(userObject, process.env.JWT_ACCESS_SECRET || 'hello world', { expiresIn: process.env.JWT_ACCESS_DURATION });
+            const token = jwt.sign(userObject, process.env.JWT_ACCESS_SECRET || 'hello world', { expiresIn: process.env.JWT_ACCESS_DURATION || '7d' });
 
             return { success: true, data: `Bearer ${token}`, code: 201, message: 'Login Success' };
         } catch (error) {

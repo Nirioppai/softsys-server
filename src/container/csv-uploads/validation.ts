@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
+import { Request, Response, NextFunction } from 'express';
 import { cleaner } from '../../_common/messages';
 import { registerSchema } from '../authentication';
 
@@ -27,7 +27,7 @@ export const checkDuplicated = () => {
         let accounts = req.body.accounts;
 
         let valueArr = accounts.map(function (item: any) {
-            return item.adminId;
+            return item.adminId || item.employeeId;
         });
 
         var sorted_arr = valueArr.slice().sort();
@@ -37,8 +37,25 @@ export const checkDuplicated = () => {
                 duplicates.push(sorted_arr[i]);
             }
         }
-        if (duplicates) return res.status(400).json({ success: false, message: 'There are duplicated on this set', data: duplicates });
+        if (duplicates.length > 0) return res.status(400).json({ success: false, message: 'There are duplicated on this set', data: duplicates });
+        req.body = { ...req.body, ids: valueArr };
+        next();
+    };
+};
 
-        !duplicates && next();
+export const checkExistInDataBase = (model: any, field: string) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
+        const duplicateIds: Array<string> = [];
+        const existingData: Array<Object> = await model.find({ [field]: { $in: req.body.ids } });
+
+        existingData.forEach((element: any) => {
+            duplicateIds.push(element[field]);
+        });
+
+        if (existingData.length > 0) return res.status(400).json({ success: false, message: 'Data already exist in the database', duplicates: duplicateIds });
+
+        delete req.body.ids;
+
+        next();
     };
 };

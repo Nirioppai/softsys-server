@@ -1,5 +1,6 @@
 import express from 'express';
-import { uploadManyAdminAccount, validateAccounts, checkDuplicated } from './index';
+import { AdminModel } from '../admin';
+import { uploadManyAdminAccount, validateAccounts, checkDuplicated, checkExistInDataBase } from './index';
 import { jwtAuth, checkIfAdmin, checkAccess } from '../../_common/check-token';
 
 const router = express.Router();
@@ -14,6 +15,10 @@ const router = express.Router();
  * @param { token, type } req
  *
  */
-router.post('/admin-many', [jwtAuth, checkAccess(['Admin:Read', 'Admin:Create']), checkIfAdmin, validateAccounts(), checkDuplicated()], uploadManyAdminAccount);
+router.post(
+    '/admin-many',
+    [jwtAuth, checkAccess(['Admin:Read', 'Admin:Create']), checkIfAdmin, validateAccounts(), checkDuplicated(), checkExistInDataBase(AdminModel, 'adminId')],
+    uploadManyAdminAccount
+);
 
 export = router;
