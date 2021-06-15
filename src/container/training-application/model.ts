@@ -18,7 +18,7 @@ const ApplicationSchema: Schema = new Schema({
         type: String
     },
     status: { type: String },
-    personelInCharge: {
+    personnelInCharge: {
         type: String,
         required: true
     },
@@ -27,4 +27,4 @@ const ApplicationSchema: Schema = new Schema({
     }
 });
 
-export default mongoose.model<IApplication>('Applicant', ApplicationSchema);
+export default mongoose.model<IApplication>('Application', ApplicationSchema);
