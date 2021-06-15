@@ -9,6 +9,6 @@ export default interface IApplication extends Document {
     trainingProgram: String;
     trainingDate: String;
     status: String;
-    personelInCharge: String;
+    personnelInCharge: String;
     reason: String;
 }
