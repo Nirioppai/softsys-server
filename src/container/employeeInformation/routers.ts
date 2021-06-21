@@ -35,7 +35,7 @@ router.post('/', [jwtAuth, checkIfAdmin, validation()], EmployeeInformationContr
  * @param {  } req
  *
  */
-router.patch('/:id', [jwtAuth, checkIfAdmin, validation()], EmployeeInformationController.updateEmployeeInformation);
+router.put('/:id', [jwtAuth, checkIfAdmin, validation()], EmployeeInformationController.updateEmployeeInformation);
 
 /**
  * Route to delete employeeInformation

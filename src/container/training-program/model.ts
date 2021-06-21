@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import ITraining from './_interface';
 
-const ApplicationTrainingSchema: Schema = new Schema({
+const TrainingProgramSchema: Schema = new Schema({
     name: {
         type: String,
         required: true
@@ -11,4 +11,4 @@ const ApplicationTrainingSchema: Schema = new Schema({
     }
 });
 
-export default mongoose.model<ITraining>('Applicant', ApplicationTrainingSchema);
+export default mongoose.model<ITraining>('TrainingProgram', TrainingProgramSchema);

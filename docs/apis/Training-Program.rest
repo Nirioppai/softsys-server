@@ -3,110 +3,86 @@
 //  Bearer Token should also be changed depending on the generated JWT using the auth API
 //
 
-//  GET All Employee api
-GET http://localhost:5000/api/employee
+//  GET All Training Programs api
+GET http://localhost:5000/api/training-program
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
 
 ###
 
-//  GET One Employee api
-GET http://localhost:5000/api/employee/:id
+//  GET One Training Program api
+GET http://localhost:5000/api/training-program/:id
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
 
+###
+
+//  POST CREATE One Training Program api
+POST http://localhost:5000/api/training-program
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
+
+{
+    "name":"sadasdas",
+    "description":"asdasdas"
+}
 
 ###
 
-//  PUT UPDATE One Employee api
-PUT http://localhost:5000/api/employee/60cd0167d251744fdc260d50
+//  POST CREATE Many Training Program api
+POST http://localhost:5000/api/training-program/many
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
+
+{
+    "items" : [
+           {
+                "name":"sadasdas",
+                "description":"asdasdas"
+            },
+           {
+                "name":"sadasdas",
+                "description":"asdasdas"
+            }
+    ]
+}
+
+###
+
+//  PUT UPDATE One Training Program api
+PUT http://localhost:5000/api/training-program/60cd0167d251744fdc260d50
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
 
 // Note: Object ID should be existing
 
 {
-      "name": {
-        "firstName": "Ashlynn",
-        "middleName": "c",
-        "lastName": "Will",
-        "title": "Forward Optimization Administrator",
-        "suffix": "II"
-      },
-      "dateOfBirth": {
-        "month": "02",
-        "day": "25",
-        "year": "2000"
-      },
-      "contactNumber": {
-        "mobileNumber": [
-          "963.580.2313 x4698",
-          "1-704-464-2397 x0444"
-        ],
-        "landLineNumber": [
-          "328-888-5652"
-        ]
-      },
-      "homeAddress": {
-        "homeNumOrLotNum": "Strosin Port",
-        "streetName": "70402 Raheem Turnpike",
-        "districtOrTown": "Ferrybury",
-        "zipCode": "30655-5098",
-        "province": "West",
-        "country": "France"
-      },
-      "currentAddress": {
-        "homeNumOrLotNum": "Sawayn Gateway",
-        "streetName": "58442 Rohan Valley",
-        "districtOrTown": "Greenfelderville",
-        "zipCode": "06507",
-        "province": "North",
-        "country": "Saint Helena"
-      },
-      "permanentAddress": {
-        "homeNumOrLotNum": "Reed Causeway",
-        "streetName": "43822 Boyle Avenue",
-        "districtOrTown": "East Kobefort",
-        "zipCode": "76616-0887",
-        "province": "South",
-        "country": "Jordan"
-      },
-      "gender": "Gender Questioning",
-      "role": "",
-      "permissions": [],
-      "type": "employee",
-      "nationality": "Uruguay",
-      "isActive": false,
-      "_id": "60bdde9a00ec2a445c344dc0",
-      "employeeId": "2021-2781",
-      "password": "$2a$10$lLGeeNDaf71ShcsFiML5h.o2nfqnaaX/54LTCxRxFQrscuCtYFBZy",
-      "__v": 0,
-      "createdAt": "2021-06-07T08:53:46.156Z",
-      "updatedAt": "2021-06-07T08:53:46.156Z"
-    }
+    "name":"sadasda123123s",
+    "description":"asdasdas"
+}
 
 ###
 
-//  DELETE One Employee api
-DELETE http://localhost:5000/api/employee/:id
+//  DELETE DELETE One Training Program api
+DELETE http://localhost:5000/api/training-program/:id
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
 
-// Note: object ID should be existing
+// Note: Object ID should be existing
 
 ###
 
-//  DELETE Many Employee api
-DELETE http://localhost:5000/api/employee/many
+//  DELETE DELETE Many Training Program api
+DELETE http://localhost:5000/api/training-program/many
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
 
-// Note: object ID within the Items Array should be existing
+// Note: Object ID within the Items Array should be existing
 
 {
     "items" : [
-        "60a5f1d9a6543b53cc83e85d",
-        "60a5f1d9a6543b53cc83e85d"
+        "60c8653090451433ac37b32b",
+        "60c876ad54739c2edc7aefeb"
     ]
 }
 
