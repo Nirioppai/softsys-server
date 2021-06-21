@@ -1,0 +1,121 @@
+//  Notes:
+//  URL Parameters such as :id should be changed to Object Id for the API to 
+//  Bearer Token should also be changed depending on the generated JWT using the auth API
+//
+
+//  GET All Attendance api
+GET http://localhost:5000/api/attendance
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
+
+###
+
+//  GET One Attendance api
+GET http://localhost:5000/api/attendance/:id
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
+
+###
+
+//  POST CREATE One Attendance api
+POST http://localhost:5000/api/attendance
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
+
+{ 
+    "employee": "qweqwe12312312312qweqw",
+    "attendanceStatus": "Present",
+    "timeIn": "wqeqweqwe",
+    "timeOut":"qweqweq",
+    "workStatus": "Early dismissal",
+    "date": {
+        "month": "qweqwe",
+        "day": "Strqweqwing",
+        "year": "Strqweqweing",
+    }
+}
+
+###
+
+//  POST CREATE Many Attendance api
+POST http://localhost:5000/api/attendance/many
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
+
+{
+    "items" : [
+          { 
+            "employee": "qweqwe12312312312qweqw",
+            "attendanceStatus": "Present",
+            "timeIn": "wqeqweqwe",
+            "timeOut":"qweqweq",
+            "workStatus": "Early dismissal",
+            "date": {
+                "month": "qweqwe",
+                "day": "Strqweqwing",
+                "year": "Strqweqweing",
+            }
+        },
+           { 
+            "employee": "qweqwqeqwewe12312312312qweqw",
+            "attendanceStatus": "Present",
+            "timeIn": "wqeqweqwe",
+            "timeOut":"qweqweq",
+            "workStatus": "Early dismissal",
+            "date": {
+                "month": "qweqwe",
+                "day": "Strqweqwing",
+                "year": "Strqweqweing",
+            }
+        }
+    ]
+}
+
+###
+
+//  PUT UPDATE One Attendance api
+PUT http://localhost:5000/api/attendance/:id
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
+
+// Note: Object ID should be existing
+
+{ 
+    "employee": "qweqwe12312312312qweqw",
+    "attendanceStatus": "Present",
+    "timeIn": "wqeqweqwe",
+    "timeOut":"qweqweq",
+    "workStatus": "Early dismissal",
+    "date": {
+        "month": "qweqwe",
+        "day": "Strqweqwing",
+        "year": "Strqweqweing",
+    }
+}
+
+###
+
+//  DELETE DELETE One Attendance api
+DELETE http://localhost:5000/api/attendance/:id
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
+
+// Note: Object ID should be existing
+
+###
+
+//  DELETE DELETE Many Attendance api
+DELETE http://localhost:5000/api/attendance/many
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJiNzg4ODdlN2Y3NzMyNDBjYTcwZWEiLCJhZG1pbklkIjoiMjAyMS0wMDAxIiwidHlwZSI6ImFkbWluIiwicm9sZSI6IlN1cGVyLWFkbWluIiwicGVybWlzc2lvbnMiOlsiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGQ5IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRhIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRiIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRjIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRkIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRlIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGRmIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUwIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUxIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUyIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGUzIiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU0IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU1IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU2IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU3IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU4IiwiNjBiYjc4ODg3ZTdmNzczMjQwY2E3MGU5Il0sImlhdCI6MTYyMjg5ODgzNCwiZXhwIjoxNjIzNTAzNjM0fQ.Kc56ebHUTn4SVAZfmbDGmkAMjg1GH00hjwOY_8g3qWw
+
+// Note: Object ID within the Items Array should be existing
+
+{
+    "items" : [
+        "60c8653090451433ac37b32b",
+        "60c876ad54739c2edc7aefeb"
+    ]
+}
+
+###

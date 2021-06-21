@@ -1,2 +1,2 @@
-export { uploadManyAdminAccount } from './controller';
+export { uploadManyAdminAccount, uploadManyEmployeeAccount } from './controller';
 export { validateAccounts, checkDuplicated, checkExistInDataBase } from './validation';
