@@ -4,6 +4,7 @@ import AdminSeed from './adminSeed';
 import EmployeeSeed from './employeeSeed';
 import PermissionSeed from './permissionSeed';
 import SuperAdminSeed from './superAdminSeed';
+import AttendanceSeed from './attendanceSeed';
 
 // register a user in
 const adminSeed = async (req: Request, res: Response) => {
@@ -25,12 +26,19 @@ const superAdminSeed = async (req: Request, res: Response) => {
     res.status(200).send(result);
 };
 
+const attendanceSeed = async (req: Request, res: Response) => {
+    const result: any = await AttendanceSeed();
+    res.status(200).send(result);
+};
+
 const seedAll = async (req: Request, res: Response) => {
     await AdminSeed();
     await EmployeeSeed();
     await PermissionSeed();
     await SuperAdminSeed();
+    await AttendanceSeed();
+
     res.status(200).send({ success: true, message: 'All data has been successfully seeded . . . ' });
 };
 
-export { adminSeed, employeeSeed, permissionSeed, seedAll, superAdminSeed };
+export { adminSeed, employeeSeed, permissionSeed, seedAll, superAdminSeed, attendanceSeed };

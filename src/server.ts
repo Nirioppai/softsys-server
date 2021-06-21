@@ -13,6 +13,7 @@ import permissionRoutes from './container/permissions/routers';
 import roleRoutes from './container/roles/routers';
 import uploadRoutes from './container/csv-uploads/routers';
 import applicationRoutes from './container/training-application/routers';
+import attendanceRoutes from './container/attendance/routers';
 import programRoutes from './container/training-program/routers';
 
 // require database configs and dotenv to allow the use or env variables
@@ -38,6 +39,7 @@ app.use('/api/permission', permissionRoutes);
 app.use('/api/role', roleRoutes);
 app.use('/api/uploads', uploadRoutes);
 app.use('/api/application', applicationRoutes);
+app.use('/api/attendance', attendanceRoutes);
 app.use('/api/training-program', programRoutes);
 
 // start the app
