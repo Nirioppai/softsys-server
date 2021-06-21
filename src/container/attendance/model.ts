@@ -11,7 +11,7 @@ const AttendanceSchema: Schema = new Schema({
         type: String
     },
     timeIn: {
-        type: Number
+        type: String
     },
     timeOut: {
         type: String

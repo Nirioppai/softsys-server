@@ -18,7 +18,7 @@ const AttendanceSeed = async () => {
     // create 10 attendance
     for (let i = 0; i < 10; i++) {
         const attendance = new AttendanceModel({
-            employee: '2021-' + faker.datatype.number(9999),
+            employee: 'objectId',
             attendanceStatus: 'Present',
             timeIn: 'sadsadsad',
             timeOut: 'sadsadsad',
@@ -27,7 +27,8 @@ const AttendanceSeed = async () => {
                 month: 'sadasdas',
                 day: 'sadasdas',
                 year: 'sadasdas'
-            }
+            },
+            notes: 'asdasdasd'
         });
 
         // push generated data to the holder
