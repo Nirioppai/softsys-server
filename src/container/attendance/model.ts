@@ -30,6 +30,9 @@ const AttendanceSchema: Schema = new Schema({
         year: {
             type: String
         }
+    },
+    notes: {
+        type: String
     }
 });
 

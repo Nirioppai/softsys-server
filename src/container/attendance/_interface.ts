@@ -11,4 +11,5 @@ export default interface IAttendance extends Document {
         day: String;
         year: String;
     };
+    notes: String;
 }
