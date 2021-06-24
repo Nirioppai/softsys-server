@@ -47,9 +47,9 @@ class ApplicantService {
     async applicationCreateOne(applicationInfo: any) {
         // Add Code Validation after Training Program Module is created
         // Check if Training Program is existing
-        let isExisting = await TrainingProgramModel.find({ name: applicationInfo.trainingProgram });
+        // let isExisting = await TrainingProgramModel.find({ name: applicationInfo.trainingProgram });
         // Return if none
-        if (isExisting.length === 0) return { success: false, message: 'Training Program does not exist', code: 400 };
+        // if (isExisting.length === 0) return { success: false, message: 'Training Program does not exist', code: 400 };
         // Randomly Generate ID
         let applicationId: number = faker.datatype.number(999999);
         // Append ID to ApplicantInfo
@@ -74,9 +74,9 @@ class ApplicantService {
             for (let i = 0; i < applicationInfo.length; i++) {
                 // Add Code Validation after Training Program Module is created
                 // Check if Training Program is existing
-                let isExisting = await TrainingProgramModel.find({ name: applicationInfo[i].trainingProgram });
+                // let isExisting = await TrainingProgramModel.find({ name: applicationInfo[i].trainingProgram });
                 // Return if none
-                if (isExisting.length === 0) return { success: false, message: 'Training Program does not exist', code: 400 };
+                // if (isExisting.length === 0) return { success: false, message: 'Training Program does not exist', code: 400 };
                 // Randomly Generate ID
                 let applicationId: number = faker.datatype.number(999999);
                 // Append ID to ApplicantInfo
@@ -95,9 +95,9 @@ class ApplicantService {
     async applicationUpdate(_id: string, applicationInfo: any) {
         // Add Code Validation after Training Program Module is created
         // Check if Training Program is existing
-        let isExisting = await TrainingProgramModel.find({ name: applicationInfo.trainingProgram });
+        // let isExisting = await TrainingProgramModel.find({ name: applicationInfo.trainingProgram });
         // Return if none
-        if (isExisting.length === 0) return { success: false, message: 'Training Program does not exist', code: 400 };
+        // if (isExisting.length === 0) return { success: false, message: 'Training Program does not exist', code: 400 };
         // Check if it exists
         let isExisting = await ApplicationModel.findById({ _id });
         // Return if none
