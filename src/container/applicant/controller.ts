@@ -22,5 +22,25 @@ const getOneApplicant = async (req: Request, res: Response) => {
     let result: object = await applicantService.getOneApplicant(_id);
     sendResponse(res, result);
 };
+// Delete One Applicant
+const deleteOneApplicant = async (req: Request, res: Response) => {
+    let _id: string = req.params.id;
+    let result = await applicantService.applicantDeleteOne(_id);
+    sendResponse(res, result);
+}
+// Delete Many Applicant
+const deleteManyApplicant = async (req: Request, res: Response) => {
+    let applicants: Array<any> = req.body.applicants;
+    let result = await applicantService.applicantDeleteMany(applicants);
+    sendResponse(res, result);
+}
+// Update Applicant 
+const updateOneApplicant = async (req: Request, res: Response) => {
+    let _id: string = req.params.id;
+    let applicantInfo: any = req.body;
+    let result = await applicantService.applicantUpdateOne(_id, applicantInfo);
+    sendResponse(res, result);
+}
 
-export default { getAllApplicants, createApplicant, getOneApplicant };
+export default { getAllApplicants, createApplicant, getOneApplicant,
+    deleteOneApplicant, deleteManyApplicant, updateOneApplicant };
