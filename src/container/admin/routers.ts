@@ -33,7 +33,7 @@ router.put('/update/:id', [jwtAuth, checkAccess(['Admin:Read', 'Admin:Update']),
  *  Route to edit administrator permissions and role
  *  @params { role, permissions }
  */
-router.put('/update/permission-role/:id', [jwtAuth, checkAccess(['Admin:Read', 'Admin:Update']), validateUpdatePermissionAndRole()], AdminController.updatePermissionAndRole);
+router.put('/update/permission-role/:id', [jwtAuth, checkAccess(['Admin:Read', 'Admin:Update']), checkIfAdmin, validateUpdatePermissionAndRole()], AdminController.updatePermissionAndRole);
 
 /**
  * DELETE Admin
