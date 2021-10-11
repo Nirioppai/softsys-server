@@ -125,8 +125,12 @@ class ApplicantService {
         try {
             const applicant: any = await ApplicantModel.findById(_id);
 
-            await ApplicantModel.findByIdAndUpdate({_id}, applicantInfo );
-            await ApplicantInfoModel.findOneAndUpdate({ applicantNumber: applicant.applicantNumber }, applicantInfo);
+            await ApplicantModel.findByIdAndUpdate({_id}, applicantInfo, {
+                returnOriginal: false
+            });
+            await ApplicantInfoModel.findOneAndUpdate({ applicantNumber: applicant.applicantNumber }, applicantInfo, {
+                returnOriginal: false
+            });
 
             return { successs: true, message: 'Applicant Updated', code: 200 };
         } catch (error) {
