@@ -29,6 +29,27 @@ router.get('/get/:id', [jwtAuth], ApplicantController.getOneApplicant);
  * @param { token, type } req
  *
  */
-router.post('/create', [jwtAuth, checkIfAdmin, validateApplicant()], ApplicantController.createApplicant);
+router.post('/create', [jwtAuth], ApplicantController.createApplicant);
+
+/**
+ * Route to delete one applicant
+ * @param { token, type } req
+ *
+ */
+router.delete('/deleteOne/:id', [jwtAuth], ApplicantController.deleteOneApplicant);
+
+/**
+ * Route to delete many applicant
+ * @param { token, type } req
+ *
+ */
+router.delete('/deleteMany', [jwtAuth], ApplicantController.deleteManyApplicant);
+
+/**
+ * Route to update one applicant
+ * @param { token, type } req
+ *
+ */
+router.put('/update/:id', [jwtAuth], ApplicantController.updateOneApplicant);
 
 export = router;
