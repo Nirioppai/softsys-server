@@ -36,7 +36,7 @@ const seedAll = async (req: Request, res: Response) => {
     await EmployeeSeed();
     await PermissionSeed();
     await SuperAdminSeed();
-    await AttendanceSeed();
+    // await AttendanceSeed();
 
     res.status(200).send({ success: true, message: 'All data has been successfully seeded . . . ' });
 };
