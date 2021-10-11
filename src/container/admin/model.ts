@@ -18,11 +18,7 @@ const AdminSchema: Schema = new Schema(
             type: String,
             default: ''
         },
-        dateOfBirth: {
-            month: { type: String },
-            day: { type: String },
-            year: { type: String }
-        },
+        dateOfBirth: { type: String },
         contactNumber: {
             mobileNumber: [{ type: String }],
             landLineNumber: [{ type: String }]
