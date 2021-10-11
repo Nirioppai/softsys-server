@@ -50,6 +50,6 @@ router.delete('/deleteMany', [jwtAuth], ApplicantController.deleteManyApplicant)
  * @param { token, type } req
  *
  */
-router.put('/update/:id', [jwtAuth], ApplicantController.updateOneApplicant);
+router.put('/update/:id', [jwtAuth ], ApplicantController.updateOneApplicant);
 
 export = router;
