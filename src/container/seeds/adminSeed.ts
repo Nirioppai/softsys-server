@@ -20,7 +20,7 @@ const AdminSeed = async () => {
     let adminAccounts = [];
 
     // create 10 random accounts
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 10; i++) {
         const admins = new AdminModel({
             adminId: '2021-' + faker.datatype.number(9999),
             name: {
