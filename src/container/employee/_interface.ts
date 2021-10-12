@@ -9,11 +9,7 @@ export default interface IEmployee extends Document {
         suffix: String;
     };
     gender: String;
-    dateOfBirth: {
-        month: String;
-        day: String;
-        year: String;
-    };
+    dateOfBirth: String,
     contactNumber: {
         mobileNumber: Array<String>;
         landLineNumber: Array<String>;
