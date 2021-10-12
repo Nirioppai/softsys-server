@@ -53,7 +53,7 @@ class EmployeeInformationService {
             const isExisting = await EmployeeInformationModel.findById(id); //employee information id
             if (isExisting === null) return { success: false, message: 'Employee information does not exist', code: 400 };
 
-            const employeeInformation = await EmployeeInformationModel.findOneAndUpdate({ _id: id }, information);
+            const employeeInformation = await EmployeeInformationModel.findOneAndUpdate({ _id: id }, information, { returnOriginal: false });
             return { success: true, data: employeeInformation, code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to update employee information', deepLog: error, code: 400 };
