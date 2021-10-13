@@ -27,17 +27,10 @@ const contactNumber = Joi.object()
     .required()
     .messages(messageBuilder({ field: 'Contact Number' }));
 
-const dateOfBirth = Joi.object().keys({
-    day: Joi.string()
-        .required()
-        .messages(messageBuilder({ field: 'Day' })),
-    month: Joi.string()
-        .required()
-        .messages(messageBuilder({ field: 'Month' })),
-    year: Joi.string()
-        .required()
-        .messages(messageBuilder({ field: 'Year' }))
-});
+const dateOfBirth = Joi.string()
+    .required()
+    .allow('')
+    .messages(messageBuilder({ field: 'Date of Birth' }));
 
 const name = Joi.object().keys({
     firstName: Joi.string()
@@ -127,6 +120,21 @@ const registerSchema = Joi.object()
     })
     .messages(messageBuilder({ field: '' }));
 
+const registerSchemaEmployee = Joi.object()
+    .keys({
+        contactNumber,
+        employeeId,
+        name,
+        nationality,
+        dateOfBirth,
+        homeAddress: address.messages(messageBuilder({ field: 'Home Address' })),
+        currentAddress: address.messages(messageBuilder({ field: 'Current Address' })),
+        permanentAddress: address.messages(messageBuilder({ field: 'Permanent Address' })),
+        role,
+        permissions
+    })
+    .messages(messageBuilder({ field: '' }));
+
 const adminLoginSchema = Joi.object()
     .keys({
         adminId,
@@ -144,6 +152,17 @@ const employeeLoginSchema = Joi.object()
 const validateRegister = () => {
     return (req: Request, res: Response, next: NextFunction) => {
         const { error } = registerSchema.validate(req.body, { abortEarly: false });
+        if (error) {
+            const cleanError = cleaner(error);
+            return res.status(400).json(cleanError);
+        }
+        next();
+    };
+};
+
+const validateRegisterEmployee = () => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        const { error } = registerSchemaEmployee.validate(req.body, { abortEarly: false });
         if (error) {
             const cleanError = cleaner(error);
             return res.status(400).json(cleanError);
@@ -171,4 +190,4 @@ const validateLogin = (role: String) => {
     };
 };
 
-export { registerSchema, validateRegister, validateLogin, adminId, employeeId, name, address, password, nationality, permissions, role, contactNumber };
+export { registerSchema, validateRegister, validateRegisterEmployee, validateLogin, adminId, employeeId, name, address, password, nationality, permissions, role, contactNumber };

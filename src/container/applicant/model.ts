@@ -15,11 +15,7 @@ const ApplicantSchema: Schema = new Schema({
     gender: {
         type: String
     },
-    dateOfBirth: {
-        month: { type: String },
-        day: { type: String },
-        year: { type: String }
-    },
+    dateOfBirth: { type: String },
     contactNumber: {
         mobileNumber: [{ type: String }],
         landLineNumber: [{ type: String }],

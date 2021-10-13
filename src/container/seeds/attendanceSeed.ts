@@ -1,6 +1,7 @@
 import { AttendanceModel } from '../attendance/index';
 import faker from 'faker';
 import dotenv from 'dotenv';
+import { EmployeeModel } from '../employee';
 
 dotenv.config();
 
@@ -15,10 +16,11 @@ const AttendanceSeed = async () => {
      */
     let manyAttendance = [];
 
+    let employees = await EmployeeModel.find();
     // create 10 attendance
     for (let i = 0; i < 10; i++) {
         const attendance = new AttendanceModel({
-            employee: 'objectId',
+            employee: employees[i]._id,
             attendanceStatus: 'Present',
             timeIn: 'sadsadsad',
             timeOut: 'sadsadsad',

@@ -30,20 +30,10 @@ const gender = Joi.string()
     .required()
     .messages(messageBuilder({ field: 'Gender' }));
 
-const dateOfBirth = Joi.object().keys({
-    month: Joi.string()
-        .allow('')
-        .required()
-        .messages(messageBuilder({ field: 'Month' })),
-    day: Joi.string()
-        .allow('')
-        .required()
-        .messages(messageBuilder({ field: 'Day' })),
-    year: Joi.string()
-        .allow('')
-        .required()
-        .messages(messageBuilder({ field: 'Year' }))
-});
+const dateOfBirth = Joi.string()
+    .required()
+    .allow('')
+    .messages(messageBuilder({ field: 'Date of Birth' }));
 
 const contactNumber = Joi.object()
     .keys({

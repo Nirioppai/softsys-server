@@ -2,6 +2,7 @@
 import express, { Application } from 'express';
 import http from 'http';
 import cors from 'cors';
+import morgan from 'morgan';
 // routes
 import authRoutes from './container/authentication/routers';
 import seedRoutes from './container/seeds/routers';
@@ -27,6 +28,7 @@ const server = http.createServer(app);
 app.use(express.json({ limit: '50mb', type: 'application/json' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(morgan('tiny'));
 
 // this section consumes the apis
 app.use('/api/auth', authRoutes);

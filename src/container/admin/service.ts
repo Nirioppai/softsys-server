@@ -121,9 +121,9 @@ class AdminService {
             const isExisting = await this.model.findById({ _id });
             if (isExisting === null) return { success: false, message: 'Profile does not exist', code: 400 };
 
-            await this.model.findOneAndUpdate({ _id: _id }, adminInfo);
+            const data = await this.model.findOneAndUpdate({ _id: _id }, adminInfo, { returnOriginal: false });
 
-            return { success: true, code: 200, message: 'Profile information is updated successfully' };
+            return { success: true, code: 200, message: 'Profile information is updated successfully', data: data };
         } catch (error) {
             return { success: false, message: 'Failed to update admin accounts', deepLog: error, code: 400 };
         }
@@ -134,8 +134,8 @@ class AdminService {
             // find account from id and check if it exist
             const isExisting = await this.model.findById({ _id });
             if (isExisting === null) return { success: false, message: 'Admin does not exist', code: 400 };
-            await this.model.findOneAndUpdate({ _id: _id }, { permissions: permissionAndRoles.permissions, role: permissionAndRoles.role });
-            return { success: true, code: 200, message: 'Permission is updated successfully' };
+            const data = await this.model.findOneAndUpdate({ _id: _id }, { permissions: permissionAndRoles.permissions, role: permissionAndRoles.role }, { returnOriginal: false });
+            return { success: true, code: 200, message: 'Permission is updated successfully', data: data };
         } catch (error) {
             return { success: false, message: 'Failed to update admin accounts', deepLog: error, code: 400 };
         }
