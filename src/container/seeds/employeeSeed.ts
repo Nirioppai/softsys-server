@@ -73,8 +73,9 @@ const EmployeeSeed = async () => {
     }
 
     // inserts accounts to database
-    await EmployeeModel.insertMany(adminAccounts);
     console.log('Seeding admin accounts ...');
+    await EmployeeModel.insertMany(adminAccounts);
+    console.log('Admin accounts seeded.');
 };
 
 export default EmployeeSeed;

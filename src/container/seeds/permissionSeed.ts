@@ -45,9 +45,9 @@ const PermissionSeed = async () => {
             permissions.push(newPermission);
         }
     }
-
-    await PermissionSchema.insertMany(permissions);
     console.log('Seeding permissions...');
+    await PermissionSchema.insertMany(permissions);
+    console.log('Permissions seeded.');
 };
 
 export default PermissionSeed;
