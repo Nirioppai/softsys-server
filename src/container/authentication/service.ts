@@ -49,9 +49,9 @@ class AuthService {
         userInfo.password = await bscryptjs.hash(process.env.DEFAULT_PASSWORD || 'DEVSCRUM', 10);
 
         try {
-            const newUser = new this.model(userInfo);
-            await newUser.save();
-            return { success: true, data: userInfo, code: 201, message: 'Account Created Successfully' };
+            const newUser = await this.model.create(userInfo);
+            newUser.password = undefined;
+            return { success: true, data: newUser, code: 201, message: 'Account Created Successfully' };
         } catch (error) {
             return { success: false, message: 'Failed to create a new account', deepLog: error, code: 400 };
         }
