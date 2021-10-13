@@ -12,7 +12,7 @@ class EmployeeService {
 
     async getAll() {
         try {
-            const employees = await EmployeeModel.find();
+            const employees = await EmployeeModel.find().select('-password');
             return { success: true, data: employees, code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to get all employee', deepLog: error, code: 400 };
@@ -20,7 +20,7 @@ class EmployeeService {
     }
     async getOne(id: string) {
         try {
-            const employee = await EmployeeModel.findById(id);
+            const employee = await EmployeeModel.findById(id).select('-password');
             return { success: true, data: employee, code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to get employee', deepLog: error, code: 400 };
