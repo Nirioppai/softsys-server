@@ -26,11 +26,7 @@ const SuperAdminSeed = async () => {
             title: '',
             suffix: ''
         },
-        dateOfBirth: {
-            month: '02',
-            day: '25',
-            year: '2000'
-        },
+        dateOfBirth: faker.date.past(),
         contactNumber: {
             mobileNumber: [faker.phone.phoneNumber(), faker.phone.phoneNumber()],
             landLineNumber: [faker.phone.phoneNumberFormat()]

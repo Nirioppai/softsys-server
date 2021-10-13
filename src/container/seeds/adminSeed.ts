@@ -30,7 +30,7 @@ const AdminSeed = async () => {
                 title: faker.name.title(),
                 suffix: faker.name.suffix()
             },
-            dateOfBirth: 'July 20, 2000',
+            dateOfBirth: faker.date.past(),
             contactNumber: {
                 mobileNumber: [faker.phone.phoneNumber(), faker.phone.phoneNumber()],
                 landLineNumber: [faker.phone.phoneNumberFormat()]
