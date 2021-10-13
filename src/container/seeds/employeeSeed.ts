@@ -30,11 +30,7 @@ const EmployeeSeed = async () => {
                 title: faker.name.title(),
                 suffix: faker.name.suffix()
             },
-            dateOfBirth: {
-                month: '02',
-                day: '25',
-                year: '2000'
-            },
+            dateOfBirth: 'July 20, 2000',
             contactNumber: {
                 mobileNumber: [faker.phone.phoneNumber(), faker.phone.phoneNumber()],
                 landLineNumber: [faker.phone.phoneNumberFormat()]
