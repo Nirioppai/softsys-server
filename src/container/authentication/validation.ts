@@ -27,7 +27,10 @@ const contactNumber = Joi.object()
     .required()
     .messages(messageBuilder({ field: 'Contact Number' }));
 
-const dateOfBirth = Joi.string().allow("", null);
+const dateOfBirth = Joi.string()
+    .required()
+    .allow('')
+    .messages(messageBuilder({ field: 'Date of Birth' }));
 
 const name = Joi.object().keys({
     firstName: Joi.string()
