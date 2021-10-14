@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get('/all', [jwtAuth, checkIfAdmin], OrganizationChartController.getAll);
 
+router.get('/:id', [jwtAuth, checkIfAdmin], OrganizationChartController.getOne);
+
 router.post('/create', [jwtAuth, checkIfAdmin], OrganizationChartController.createOne);
 
 export = router;

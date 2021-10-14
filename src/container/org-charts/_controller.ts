@@ -11,10 +11,15 @@ const getAll = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
+const getOne = async (req: Request, res: Response) => {
+    let result: object = await employeeService.getOneOrgChart(req.params.id);
+    sendResponse(res, result);
+};
+
 // create one org chart
 const createOne = async (req: Request, res: Response) => {
     let result: object = await employeeService.createOneOrgchart(req.body);
     sendResponse(res, result);
 };
 
-export default { createOne, getAll };
+export default { createOne, getAll, getOne };
