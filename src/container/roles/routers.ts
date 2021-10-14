@@ -13,33 +13,33 @@ const router = express.Router();
  * GET All Roles
  *
  */
-router.get('/get-all-roles', [jwtAuth, checkAccess(['Role:Read']), checkIfAdmin], RoleController.getAllRoles);
+router.get('/get-all-roles', [jwtAuth], RoleController.getAllRoles);
 
 /**
  * GET One Role
  *
  */
-router.get('/get-one-role/:id', [jwtAuth, checkAccess(['Role:Read']), checkIfAdmin], RoleController.getOneRole);
+router.get('/get-one-role/:id', [jwtAuth], RoleController.getOneRole);
 
 /**
  * POST One Role
  *
  */
-router.post('/create', [jwtAuth, checkAccess(['Role:Read', 'Role:Create']), checkIfAdmin, validateCreate()], RoleController.createRole);
+router.post('/create', [jwtAuth], RoleController.createRole);
 
 /**
  *  PUT One Role
  */
-router.put('/update/:id', [jwtAuth, checkAccess(['Role:Read', 'Role:Update']), checkIfAdmin, validateCreate()], RoleController.updateRole);
+router.put('/update/:id', [jwtAuth], RoleController.updateRole);
 
 /**
  * DELETE One Role
  */
-router.delete('/delete/:id', [jwtAuth, checkAccess(['Role:Read', 'Role:Delete']), checkIfAdmin], RoleController.deleteOneRole);
+router.delete('/delete/:id', [jwtAuth], RoleController.deleteOneRole);
 
 /**
  * DELETE Many Role
  */
-router.delete('/delete-many', [jwtAuth, checkAccess(['Role:Read', 'Role:Delete']), checkIfAdmin, validateDeleteMany()], RoleController.deleteManyRole);
+router.delete('/delete-many', [jwtAuth], RoleController.deleteManyRole);
 
 export = router;

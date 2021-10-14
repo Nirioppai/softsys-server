@@ -13,12 +13,12 @@ const router = express.Router();
  * GET All Permissions
  *
  */
-router.get('/get-all-permissions', [jwtAuth, checkAccess(['Permissions:Read']), checkIfAdmin], PermissionController.getAllPermission);
+router.get('/get-all-permissions', [jwtAuth], PermissionController.getAllPermission);
 
 /**
  * GET One Permissions
  *
  */
-router.get('/get-one-permission/:id', [jwtAuth, checkAccess(['Permissions:Read']), checkIfAdmin], PermissionController.getOnePermission);
+router.get('/get-one-permission/:id', [jwtAuth], PermissionController.getOnePermission);
 
 export = router;
