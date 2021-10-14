@@ -1,7 +1,6 @@
 import express from 'express';
 import { ApplicantController } from './index';
-import { jwtAuth, checkIfAdmin } from '../../_common/check-token';
-import { validateApplicant } from './validate';
+import { jwtAuth } from '../../_common/check-token';
 
 const router = express.Router();
 
@@ -29,7 +28,7 @@ router.get('/get/:id', [jwtAuth], ApplicantController.getOneApplicant);
  * @param { token, type } req
  *
  */
-router.post('/create', [jwtAuth], ApplicantController.createApplicant);
+router.post('/create', ApplicantController.createApplicant);
 
 /**
  * Route to delete one applicant

@@ -39,12 +39,7 @@ const ApplicantInfoSchema: Schema = new Schema({
     applicationStatus: { type: String },
     desiredPosition: { type: String },
     interviewSchedule: {
-        date: {
-            month: { type: String },
-            day: { type: String },
-            year: { type: String }
-        },
-        time: { type: String }
+        type: String
     },
     interviewerId: { type: String },
     applicationResult: { type: String },
