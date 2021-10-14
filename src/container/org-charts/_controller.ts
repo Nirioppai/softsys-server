@@ -22,4 +22,19 @@ const createOne = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
-export default { createOne, getAll, getOne };
+const updateOne = async (req: Request, res: Response) => {
+    let results: object = await employeeService.updateOneOrgchart(req.body, req.params.id);
+    sendResponse(res, results);
+};
+
+const deleteOne = async (req: Request, res: Response) => {
+    let results: object = await employeeService.deleteOneOrgchart(req.params.id);
+    sendResponse(res, results);
+};
+
+const deleteMany = async (req: Request, res: Response) => {
+    let results: object = await employeeService.deleteManyOrgchart(req.body.ids);
+    sendResponse(res, results);
+};
+
+export default { createOne, getAll, getOne, updateOne, deleteMany, deleteOne };
