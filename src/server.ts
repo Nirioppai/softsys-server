@@ -16,6 +16,7 @@ import uploadRoutes from './container/csv-uploads/routers';
 import applicationRoutes from './container/training-application/routers';
 import attendanceRoutes from './container/attendance/routers';
 import programRoutes from './container/training-program/routers';
+import organizationChartRoutes from './container/org-charts/routers';
 
 // require database configs and dotenv to allow the use or env variables
 require('dotenv').config();
@@ -43,6 +44,7 @@ app.use('/api/uploads', uploadRoutes);
 app.use('/api/application', applicationRoutes);
 app.use('/api/attendance', attendanceRoutes);
 app.use('/api/training-program', programRoutes);
+app.use('/api/org-charts', organizationChartRoutes);
 
 // start the app
 const port = process.env.PORT || 5000;
