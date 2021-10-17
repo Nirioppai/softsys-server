@@ -63,8 +63,9 @@ const SuperAdminSeed = async () => {
     });
 
     // inserts accounts to database
-    await superAdmin.save();
     console.log('Seeding admin accounts ...');
+    await superAdmin.save();
+    console.log('Admin accounts seeded.');
 };
 
 export default SuperAdminSeed;

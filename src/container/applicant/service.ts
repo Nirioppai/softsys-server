@@ -1,6 +1,7 @@
 // Models
 import { ApplicantModel } from './index';
 import { ApplicantInfoModel } from '../applicantInformation/index';
+import { generateApplicantNumber } from '../../_common/generateApplicantNumber';
 /**
  * Module Applicant
  * Applicant CRUD service
@@ -52,6 +53,10 @@ class ApplicantService {
     }
 
     async applicantCreate(applicantInfo: any) {
+        const applicantNumber = generateApplicantNumber();
+
+        applicantInfo.applicantNumber = applicantNumber;
+
         // Check if there is any existing applicant
         let isExisting = await ApplicantModel.find({ applicantNumber: applicantInfo.applicantNumber });
         // Return if none
@@ -82,7 +87,7 @@ class ApplicantService {
         try {
             const applicant: any = await ApplicantModel.findById(_id);
 
-            await ApplicantModel.findByIdAndDelete({_id});
+            await ApplicantModel.findByIdAndDelete({ _id });
             await ApplicantInfoModel.findOneAndDelete({ applicantNumber: applicant.applicantNumber });
 
             return { successs: true, message: 'Applicant Deleted', code: 200 };
@@ -92,7 +97,6 @@ class ApplicantService {
     }
 
     async applicantDeleteMany(applicants: Array<String>) {
-        
         for (let i = 0; i < applicants.length; i++) {
             // Check if there is any existing applicant
             let isExisting = await ApplicantModel.findById(applicants[i]);
@@ -101,7 +105,6 @@ class ApplicantService {
         }
 
         try {
-            
             for (let i = 0; i < applicants.length; i++) {
                 const applicant: any = await ApplicantModel.findById(applicants[i]);
                 console.log(applicant);
@@ -125,7 +128,7 @@ class ApplicantService {
         try {
             const applicant: any = await ApplicantModel.findById(_id);
 
-            await ApplicantModel.findByIdAndUpdate({_id}, applicantInfo, {
+            await ApplicantModel.findByIdAndUpdate({ _id }, applicantInfo, {
                 returnOriginal: false
             });
             await ApplicantInfoModel.findOneAndUpdate({ applicantNumber: applicant.applicantNumber }, applicantInfo, {
@@ -137,7 +140,6 @@ class ApplicantService {
             return { success: false, message: 'Failed to Update Applicant', deeplog: error, code: 400 };
         }
     }
-
 }
 
 export default ApplicantService;

@@ -14,7 +14,7 @@ class EmployeeInformationService {
     }
     async getEmployeeInformations(id: string) {
         try {
-            const employeeInformation = await EmployeeInformationModel.findById(id);
+            const employeeInformation = await EmployeeInformationModel.findOne({ employee: id }); //employee id
             return { success: true, data: employeeInformation, code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to get employee information', deepLog: error, code: 400 };

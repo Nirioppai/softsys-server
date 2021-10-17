@@ -38,8 +38,9 @@ const AttendanceSeed = async () => {
     }
 
     // insert many attendance to database
-    await AttendanceModel.insertMany(manyAttendance);
     console.log('Seeding many attendance ...');
+    await AttendanceModel.insertMany(manyAttendance);
+    console.log('Attendances seeded.');
 };
 
 export default AttendanceSeed;

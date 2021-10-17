@@ -1,6 +1,6 @@
 import { PermissionSchema } from '../permissions/index';
 
-const modules = ['Admin', 'Employee', 'Permissions', 'Auth', 'Role'];
+const modules = ['Admin', 'Employee', 'Permissions', 'Auth', 'Role', 'Training-Program', 'Training-Application', 'Organization-Charts', 'Applicant', 'Evaluation-Form', 'Employee-Evaluation'];
 
 const actions = ['Read', 'Create', 'Update', 'Delete'];
 
@@ -45,9 +45,9 @@ const PermissionSeed = async () => {
             permissions.push(newPermission);
         }
     }
-
-    await PermissionSchema.insertMany(permissions);
     console.log('Seeding permissions...');
+    await PermissionSchema.insertMany(permissions);
+    console.log('Permissions seeded.');
 };
 
 export default PermissionSeed;
