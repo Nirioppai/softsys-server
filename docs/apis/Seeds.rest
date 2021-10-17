@@ -1,22 +1,3 @@
 // This API will seed all data
 POST http://localhost:5000/api/seeds/all
 Content-Type: application/json
-
-###
-
-// This API will seed admin-accounts
-POST http://localhost:5000/api/seeds/admin-accounts
-Content-Type: application/json
-
-###
-
-// This API will seed employee-accounts
-POST http://localhost:5000/api/seeds/employee-accounts
-Content-Type: application/json
-
-
-###
-
-// This API will seed permissions
-POST http://localhost:5000/api/seeds/permissions
-Content-Type: application/json
