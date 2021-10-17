@@ -31,17 +31,17 @@ router.get('/:id', EmployeeController.getOne);
 router.put('/:id', EmployeeController.updateOne);
 
 /**
- * Route to delete employeeInformation
- * @param {  } req
- *
- */
-router.delete('/:id', EmployeeController.deleteOne);
-
-/**
  * Route to DELETE Many employeeInformation
  * @param { token, type } req
  *
  */
 router.delete('/many', EmployeeController.deleteMany);
+
+/**
+ * Route to delete employeeInformation
+ * @param {  } req
+ *
+ */
+router.delete('/:id', EmployeeController.deleteOne);
 
 export = router;

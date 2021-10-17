@@ -45,17 +45,17 @@ router.post('/many', [jwtAuth], TrainingProgramController.createMany);
 router.put('/:id', [jwtAuth], TrainingProgramController.updateOne);
 
 /**
- * Route to DELETE One Training program
- * @param { token, type } req
- *
- */
-router.delete('/:id', [jwtAuth], TrainingProgramController.deleteOne);
-
-/**
  * Route to DELETE Many Training program
  * @param { token, type } req
  *
  */
 router.delete('/many', [jwtAuth], TrainingProgramController.deleteMany);
+
+/**
+ * Route to DELETE One Training program
+ * @param { token, type } req
+ *
+ */
+router.delete('/:id', [jwtAuth], TrainingProgramController.deleteOne);
 
 export = router;
