@@ -4,7 +4,7 @@ import { messageBuilder, cleaner } from '../../../_common/messages';
 
 const createEmployeeEvaluationSchema = Joi.object()
     .keys({
-        employeeNumber: Joi.string()
+        employeeId: Joi.string()
             .required()
             .messages(messageBuilder({ field: 'Employee number' })),
         evaluationId: Joi.string()
@@ -20,7 +20,7 @@ const createEmployeeEvaluationSchema = Joi.object()
                     .messages(messageBuilder({ field: 'Score' }))
             })
             .messages(messageBuilder({ field: 'Evaluation Items' })),
-        merits: Joi.array().items(Joi.string()).allow([])
+        merits: Joi.array().items(Joi.string())
     })
     .messages(messageBuilder({ field: '' }));
 

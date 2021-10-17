@@ -6,7 +6,7 @@ export type EmployeeEvaluationItemScoreSchema = {
 };
 
 export interface IEmployeeEvaluationSchema extends Document {
-    employeeNumber: String;
+    employeeId: String;
     evaluationId: String;
     scores: EmployeeEvaluationItemScoreSchema[];
     evaluationItems: String[];
@@ -24,9 +24,9 @@ const employeeEvaluationScoreSchema = new Schema({
 });
 
 const EmployeeEvaluationModelSchema: Schema = new Schema({
-    employeeNumber: {
-        type: Schema.Types.ObjectId,
-        ref: 'Employee'
+    employeeId: {
+        type: String,
+        required: true
     },
     evaluationId: {
         type: Schema.Types.ObjectId,
