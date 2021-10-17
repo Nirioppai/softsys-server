@@ -1,6 +1,6 @@
 import { PermissionSchema } from '../permissions/index';
 
-const modules = ['Admin', 'Employee', 'Permissions', 'Auth', 'Role', 'Training-Program', 'Training-Application', 'Organization-Charts', 'Applicant', 'Evaluation-Form'];
+const modules = ['Admin', 'Employee', 'Permissions', 'Auth', 'Role', 'Training-Program', 'Training-Application', 'Organization-Charts', 'Applicant', 'Evaluation-Form', 'Employee-Evaluation'];
 
 const actions = ['Read', 'Create', 'Update', 'Delete'];
 
