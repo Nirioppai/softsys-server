@@ -1,26 +1,37 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-export interface IRole extends Document {
-    name: String;
-    description: String;
-    permissions: Array<String>;
+export type evaluationItemSchema = {
+    category: string;
+    criteria: string;
+    weightage: number;
+};
+
+export interface IEvaluationFormSchema extends Document {
+    evaluationName: String;
+    evaluationItems: evaluationItemSchema[];
 }
 
-const RoleSchema: Schema = new Schema(
-    {
-        name: {
-            type: String,
-            required: true
-        },
-        description: {
-            type: String,
-            required: true
-        },
-        permissions: [{ type: String }]
+const evaluationItemModelSchema = new Schema({
+    category: {
+        type: String,
+        required: true
     },
-    {
-        timestamps: true
+    criteria: {
+        type: String,
+        required: true
+    },
+    weightage: {
+        type: Number,
+        required: true
     }
-);
+});
 
-export default mongoose.model<IRole>('Role', RoleSchema);
+const EvaluationModelSchema: Schema = new Schema({
+    evaluationName: {
+        type: String,
+        required: true
+    },
+    evaluationItems: [evaluationItemModelSchema]
+});
+
+export default mongoose.model<IEvaluationFormSchema>('evaluation', EvaluationModelSchema);
