@@ -6,18 +6,9 @@ const applicationId = Joi.string()
     .required()
     .messages(messageBuilder({ field: 'Applicant ID' }));
 
-const employeeDetails = Joi.object()
-    .keys({
-        employeeNumber: Joi.string()
-            .required()
-            .messages(messageBuilder({ field: 'Employee Number' })),
-        fullName: Joi.string()
-            .required()
-            .messages(messageBuilder({ field: 'Full Name' }))
-    })
+const employeeNumber = Joi.string()
     .required()
-    .messages(messageBuilder({ field: 'Employee Details' }));
-
+    .messages(messageBuilder({ field: 'Employee Number' }));
 const trainingProgram = Joi.string()
     .required()
     .messages(messageBuilder({ field: 'Training Program' }));
@@ -41,7 +32,7 @@ const reason = Joi.string()
 
 const createSchema = Joi.object()
     .keys({
-        employeeDetails,
+        employeeNumber,
         trainingProgram,
         trainingDate,
         status,

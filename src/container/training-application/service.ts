@@ -20,7 +20,7 @@ class ApplicantService {
 
         try {
             // GET All Applications
-            let applications: any = await ApplicationModel.find();
+            let applications: any = await ApplicationModel.find().populate('employeeNumber', 'name employeeId');
 
             return { successs: true, data: applications, code: 200 };
         } catch (error) {
@@ -36,7 +36,7 @@ class ApplicantService {
 
         try {
             // GET One Applicant
-            let application: any = await ApplicationModel.findById({ _id });
+            let application: any = await ApplicationModel.findById({ _id }).populate('employeeNumber', 'name employeeId');
 
             return { success: true, data: application, code: 200 };
         } catch (error) {
