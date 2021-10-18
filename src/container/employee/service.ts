@@ -1,6 +1,8 @@
 // models
 import { EmployeeModel } from './index';
 import { EmployeeInformationModel } from '../employeeInformation';
+import { AttendanceModel } from '../attendance';
+import TrainingApplicationModel from '../training-application/model';
 
 /**
  * Module Admin
@@ -43,9 +45,10 @@ class EmployeeService {
         try {
             const isExisting = await EmployeeModel.findById(_id); //employee id
             if (isExisting === null) return { success: false, message: 'Employee does not exist', code: 400 };
-
             await EmployeeModel.findByIdAndDelete({ _id });
             await EmployeeInformationModel.findOneAndDelete({ employee: _id });
+            await AttendanceModel.findOneAndDelete({ employee: _id });
+            await TrainingApplicationModel.findOneAndDelete({ employeeNumber: _id });
             return { success: true, message: 'Employee Deleted', code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to delete employee', deepLog: error, code: 400 };
@@ -55,6 +58,8 @@ class EmployeeService {
         try {
             await EmployeeModel.deleteMany({ _id: { $in: userIdsToBeDeleted } });
             await EmployeeInformationModel.deleteMany({ employee: { $in: userIdsToBeDeleted } });
+            await AttendanceModel.deleteMany({ employee: { $in: userIdsToBeDeleted } });
+            // Note: Find all deletables related to employee and remove them also
             return { success: true, message: 'Employees Deleted', code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to DELETE Employees', deeplog: error, code: 400 };

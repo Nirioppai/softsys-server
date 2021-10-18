@@ -6,9 +6,9 @@ const ApplicationSchema: Schema = new Schema({
         type: String,
         required: true
     },
-    employeeDetails: {
-        employeeNumber: { type: String },
-        fullName: { type: String }
+    employeeNumber: {
+        type: Schema.Types.ObjectId,
+        ref: 'Employee'
     },
     trainingProgram: {
         type: String,
