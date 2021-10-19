@@ -75,7 +75,7 @@ class ApplicantService {
             const applicant: any = await ApplicantModel.findById(_id);
 
             await ApplicantModel.findByIdAndDelete({ _id });
-            await ApplicantInfoModel.findOneAndDelete({ applicantNumber: applicant.applicantNumber });
+            await ApplicantInfoModel.findOneAndDelete({ applicantNumber: applicant._id });
 
             return { successs: true, message: 'Applicant Deleted', code: 200 };
         } catch (error) {
