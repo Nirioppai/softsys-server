@@ -28,7 +28,7 @@ class ApplicantService {
                 items.push(item);
             }
 
-            return { successs: true, data: items, code: 200 };
+            return { successs: true, data: applicants, code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to get All Applicants', deeplog: error, code: 400 };
         }
