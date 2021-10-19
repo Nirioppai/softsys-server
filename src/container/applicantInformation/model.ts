@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 import IApplicantInfo from './_interface';
 
 const ApplicantInfoSchema: Schema = new Schema({
-    applicantNumber: { type: String },
+    applicantNumber: { type: Schema.Types.ObjectId, ref: 'Applicant' },
     skills: [{ type: String }],
     achievements: [{ type: String }],
     careerHighlights: [{ type: String }],
