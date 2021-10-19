@@ -1,14 +1,14 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
+export type IPersonnelSingleSchema = {
+    employeeId: String;
+    averageScore: String;
+    merits: String[];
+};
+
 export interface IPersonnelRankingSchema extends Document {
     rankingName: string;
-    employees: [
-        {
-            employeeId: String;
-            averageScore: String;
-            merits: String[];
-        }
-    ];
+    employees: IPersonnelSingleSchema[];
 }
 
 const PersonnelRankingSchema: Schema = new Schema({

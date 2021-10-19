@@ -1,7 +1,7 @@
 // models
 import PersonnelRankingModel from './model';
-import { IPersonnelRankingSchema } from './model';
-
+import { IPersonnelRankingSchema, IPersonnelSingleSchema } from './model';
+import { DuplicateChecker } from '../../../_common/checkDuplicates';
 class OrganizationChartService {
     constructor() {}
 
@@ -27,6 +27,10 @@ class OrganizationChartService {
         const isExistingEvaluationForm = await PersonnelRankingModel.find({ rankingName: data.rankingName });
 
         if (isExistingEvaluationForm.length > 0) return { success: false, message: 'Ranking name already exist', code: 400 };
+
+        const hasDuplicates = await DuplicateChecker(data.employees, 'employeeId');
+
+        if (hasDuplicates) return { success: false, message: 'There are duplicate employees in this set', code: 400 };
 
         try {
             const evalForm = await PersonnelRankingModel.create(data);

@@ -2,30 +2,28 @@ import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
 import { messageBuilder, cleaner } from '../../../_common/messages';
 
-const createEvaluationSchema = Joi.object()
+const createRankingListSchema = Joi.object()
     .keys({
-        evaluationName: Joi.string()
+        rankingName: Joi.string()
             .required()
-            .messages(messageBuilder({ field: 'Evaluation name' })),
-        evaluationItems: Joi.array()
+            .messages(messageBuilder({ field: 'Employee ID' })),
+        employees: Joi.array()
             .items({
-                category: Joi.string()
+                employeeId: Joi.string()
                     .required()
                     .messages(messageBuilder({ field: 'Category' })),
-                criteria: Joi.string()
+                averageScore: Joi.number()
                     .required()
-                    .messages(messageBuilder({ field: 'Criteria' })),
-                weightage: Joi.number()
-                    .required()
-                    .messages(messageBuilder({ field: 'Weightage' }))
+                    .messages(messageBuilder({ field: 'Ranking Score' })),
+                merits: Joi.array().items(Joi.string())
             })
-            .messages(messageBuilder({ field: 'Evaluation Items' }))
+            .messages(messageBuilder({ field: 'Ranking List' }))
     })
     .messages(messageBuilder({ field: '' }));
 
-const validateEvaluationForm = () => {
+const validateRankingList = () => {
     return (req: Request, res: Response, next: NextFunction) => {
-        const { error } = createEvaluationSchema.validate(req.body, { abortEarly: false });
+        const { error } = createRankingListSchema.validate(req.body, { abortEarly: false });
         if (error) {
             const cleanError = cleaner(error);
             return res.status(400).json(cleanError);
@@ -34,4 +32,4 @@ const validateEvaluationForm = () => {
     };
 };
 
-export { validateEvaluationForm };
+export { validateRankingList };

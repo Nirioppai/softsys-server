@@ -19,6 +19,7 @@ import programRoutes from './container/training-program/routers';
 import organizationChartRoutes from './container/org-charts/routers';
 import personnelEvaluationAdminRoutes from './container/personnel-assessments-eval/evaluation-criteria-management/routers';
 import employeeEvaluationRoutes from './container/personnel-assessments-eval/evaluation-criteria-employee/routers';
+import personnelRankingRoutes from './container/personnel-assessments-eval/personnel ranking/routers';
 
 // require database configs and dotenv to allow the use or env variables
 require('dotenv').config();
@@ -49,6 +50,7 @@ app.use('/api/training-program', programRoutes);
 app.use('/api/org-charts', organizationChartRoutes);
 app.use('/api/personnel-evaluation-admin', personnelEvaluationAdminRoutes);
 app.use('/api/employee-evaluation', employeeEvaluationRoutes);
+app.use('/api/personnel-ranking', personnelRankingRoutes);
 
 // start the app
 const port = process.env.PORT || 5000;
