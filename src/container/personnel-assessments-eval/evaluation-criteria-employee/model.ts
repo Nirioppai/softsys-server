@@ -9,7 +9,6 @@ export interface IEmployeeEvaluationSchema extends Document {
     employeeId: String;
     evaluationId: String;
     scores: EmployeeEvaluationItemScoreSchema[];
-    evaluationItems: String[];
 }
 
 const employeeEvaluationScoreSchema = new Schema({
@@ -32,12 +31,7 @@ const EmployeeEvaluationModelSchema: Schema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'evaluation'
     },
-    scores: [employeeEvaluationScoreSchema],
-    merits: [
-        {
-            type: String
-        }
-    ]
+    scores: [employeeEvaluationScoreSchema]
 });
 
 export default mongoose.model<IEmployeeEvaluationSchema>('employee-evaluation', EmployeeEvaluationModelSchema);
