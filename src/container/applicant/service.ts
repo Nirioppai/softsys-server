@@ -113,14 +113,16 @@ class ApplicantService {
         if (isExisting === null) return { success: false, message: 'Applicant does not exists', code: 400 };
 
         try {
-            const applicant: any = await ApplicantModel.findById(_id);
-
             await ApplicantModel.findByIdAndUpdate({ _id }, applicantInfo, {
                 returnOriginal: false
             });
-            await ApplicantInfoModel.findOneAndUpdate({ applicantNumber: applicant.applicantNumber }, applicantInfo, {
-                returnOriginal: false
-            });
+            const dataofApplicantInfo = await ApplicantInfoModel.findOne({ applicantNumber: _id }).select('_id');
+            if (dataofApplicantInfo !== null) {
+                applicantInfo.applicantNumber = _id;
+                await ApplicantInfoModel.findOneAndUpdate({ _id: dataofApplicantInfo._id }, applicantInfo, {
+                    returnOriginal: false
+                });
+            }
 
             return { successs: true, message: 'Applicant Updated', code: 200 };
         } catch (error) {
