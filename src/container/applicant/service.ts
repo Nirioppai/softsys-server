@@ -59,7 +59,7 @@ class ApplicantService {
             await applicant.save();
             await info.save();
 
-            return { successs: true, message: 'Applicant Created', code: 200 };
+            return { successs: true, message: 'Applicant Created', code: 200, data: applicant };
         } catch (error) {
             return { success: false, message: 'Failed to CREATE Applicant', deeplog: error, code: 400 };
         }
