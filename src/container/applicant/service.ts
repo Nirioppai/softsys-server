@@ -113,7 +113,7 @@ class ApplicantService {
         if (isExisting === null) return { success: false, message: 'Applicant does not exists', code: 400 };
 
         try {
-            await ApplicantModel.findByIdAndUpdate({ _id }, applicantInfo, {
+            const data = await ApplicantModel.findByIdAndUpdate({ _id }, applicantInfo, {
                 returnOriginal: false
             });
             const dataofApplicantInfo = await ApplicantInfoModel.findOne({ applicantNumber: _id }).select('_id');
@@ -124,7 +124,7 @@ class ApplicantService {
                 });
             }
 
-            return { successs: true, message: 'Applicant Updated', code: 200 };
+            return { successs: true, message: 'Applicant Updated', code: 200, data: data };
         } catch (error) {
             return { success: false, message: 'Failed to Update Applicant', deeplog: error, code: 400 };
         }
