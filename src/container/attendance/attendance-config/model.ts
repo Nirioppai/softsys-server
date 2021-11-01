@@ -18,14 +18,22 @@ const AttendanceConfigSchema: Schema = new Schema({
             type: String
         }
     },
-    calculationSettings: {},
+    calculationSettings: {
+        attendanceStatus: {
+            type: String
+        },
+        workStatus: {
+            type: String
+        }
+    },
     holidays: [
         new Schema({
             day: { type: String },
             month: { type: String },
-            year: { type: String }
+            year: { type: String },
+            description: { type: String }
         })
     ]
 });
 
-export default mongoose.model<IAttendanceConfig>('AttendanceConfig', AttendanceConfigSchema);
+export default mongoose.model<IAttendanceConfig>('attendance-config', AttendanceConfigSchema);
