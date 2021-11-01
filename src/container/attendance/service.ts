@@ -3,42 +3,91 @@ import { AttendanceModel } from './index';
 class AttendanceService {
     constructor() {}
 
-    async getAll() {
+    async getAllForAO(month: string, year: string, employee?: string) {
         try {
-            // GET All attendance
-            let allAttendance: any = await AttendanceModel.find();
+            // GET All attendance via month and year
+            let allAttendance: any;
+            if (employee) {
+                allAttendance = await AttendanceModel.findOne({ month, year, employee });
+            } else {
+                allAttendance = await AttendanceModel.find({ month, year });
+            }
 
             return { successs: true, data: allAttendance, code: 200 };
         } catch (error) {
-            return { success: false, message: 'Failed to GET All Attendance', deeplog: error, code: 400 };
+            return { success: false, message: 'Failed to GET All Attendance for Attendance Overview', deeplog: error, code: 400 };
+        }
+    }
+    async getAllForDM(day: string, month: string, year: string, employee?: string) {
+        try {
+            // GET All attendance
+            let allAttendance: any;
+            const results: any = [];
+            if (employee) {
+                allAttendance = await AttendanceModel.find({ month, year, employee });
+            } else {
+                allAttendance = await AttendanceModel.find({ month, year });
+            }
+
+            allAttendance.forEach((item: any) => {
+                item.monthRecord.every((item2: any) => {
+                    if (item2.day === day) {
+                        results.push({
+                            employee: item.employee,
+                            month,
+                            year,
+                            ...item2
+                        });
+                        return false;
+                    } else {
+                        return true;
+                    }
+                });
+            });
+            return { successs: true, data: results, code: 200 };
+        } catch (error) {
+            return { success: false, message: 'Failed to GET All Attendance for Daily Management', deeplog: error, code: 400 };
         }
     }
 
-    async getOne(_id: string) {
-        // Check if attendance exists
-        let isExisting = await AttendanceModel.findById({ _id });
-        // Return if none
-        if (isExisting === null) return { success: false, message: 'Attendance does not exists', code: 400 };
-
+    async createOneForAO(data: any) {
         try {
-            // GET One Attendance
-            let attendance: any = await AttendanceModel.findById({ _id });
-
-            return { success: true, data: attendance, code: 200 };
+            // CREATE or UPDATE One Attendance for Attendance Overview
+            const { month, year, employee } = data;
+            let isExisting = await AttendanceModel.findOne({ month, year, employee });
+            let results: any;
+            if (isExisting === null) {
+                results = new AttendanceModel(data);
+                results.save();
+            } else {
+                // UPDATE Details
+                results = await AttendanceModel.findOneAndUpdate({ month, year, employee }, data, {
+                    returnOriginal: false
+                });
+            }
+            return { success: true, data: results, message: 'Attendance for AO Created/Updated', code: 200 };
         } catch (error) {
-            return { success: false, message: 'Failed to GET One Attendance', deeplog: error, code: 400 };
+            return { success: false, message: 'Failed to CREATE/UPDATE One Attendance for AO', deeplog: error, code: 400 };
         }
     }
 
-    async createOne(attendance: any) {
+    //if not exisiting create, else update
+    async createOneForDM(data: any) {
         try {
-            // CREATE One Attendance
-            let newAttendance: any = new AttendanceModel(attendance);
-            newAttendance.save();
+            const { month, year, employee, ...newAttendance } = data;
+            // CREATE One Attendance for Daily Management
+            const attendanceData: any = await AttendanceModel.findOne({ month, year, employee });
+            const monthRecord = attendanceData.monthRecord;
+            const dayIdx = monthRecord.findindex((obj: any) => obj.day === newAttendance.day);
+            if (dayIdx != -1) {
+                monthRecord[dayIdx] = newAttendance;
+            } else {
+                monthRecord.push(newAttendance);
+            }
 
-            return { success: true, data: newAttendance, message: 'Attendance Created', code: 200 };
+            return { success: true, data: newAttendance, message: 'Attendance for DM Created/Updated', code: 200 };
         } catch (error) {
-            return { success: false, message: 'Failed to CREATE One Attendance', deeplog: error, code: 400 };
+            return { success: false, message: 'Failed to CREATE/UPDATE One Attendance for DM', deeplog: error, code: 400 };
         }
     }
 
@@ -50,23 +99,6 @@ class AttendanceService {
             return { success: true, data: newManyAttendance, message: 'Many Attendance Created', code: 200 };
         } catch (error) {
             return { success: false, message: 'Failed to CREATE Many Attendance', deeplog: error, code: 400 };
-        }
-    }
-
-    async updateOne(_id: string, attendance: any) {
-        // Check if it exists
-        let isExisting = await AttendanceModel.findById({ _id });
-        // Return if none
-        if (isExisting === null) return { success: false, message: 'Attendance does not exist', code: 400 };
-
-        try {
-            // UPDATE Details
-            await AttendanceModel.findByIdAndUpdate({ _id }, attendance);
-            let updatedAttendance: any = await AttendanceModel.findById({ _id });
-
-            return { success: true, data: updatedAttendance, message: 'Attendance Updated', code: 200 };
-        } catch (error) {
-            return { success: false, message: 'Failed to UPDATE Attendance', deeplog: error, code: 400 };
         }
     }
 

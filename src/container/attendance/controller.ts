@@ -3,34 +3,33 @@ import AttendanceService from './service';
 import { sendResponse } from '../../_common/response';
 
 const attendanceService = new AttendanceService();
-// GET One Attendance
-const getOne = async (req: Request, res: Response) => {
-    let _id = req.params.id;
-    let result: object = await attendanceService.getOne(_id);
-    sendResponse(res, result);
-};
+
 // GET All Attendance
 const getAll = async (req: Request, res: Response) => {
-    let result: object = await attendanceService.getAll();
+    let result;
+    if (req.query) {
+        const { day, month, year, employee, attendance } = req.query;
+        result =
+            attendance === 'attendance-overview'
+                ? await attendanceService.getAllForAO(month as string, year as string, employee as string)
+                : await attendanceService.getAllForDM(day as string, month as string, year as string, employee as string);
+    }
     sendResponse(res, result);
 };
 // CREATE One Attendance
 const createOne = async (req: Request, res: Response) => {
-    let body = req.body;
-    let result: object = await attendanceService.createOne(body);
+    const { attendance, ...body } = req.body;
+    let result;
+    if (attendance) {
+        result = attendance === 'attendance-overview' ? await attendanceService.createOneForAO(body) : await attendanceService.createOneForDM(body);
+    }
+
     sendResponse(res, result);
 };
 // CREATE Many Attendance
 const createMany = async (req: Request, res: Response) => {
     let body = req.body.items;
     let result: object = await attendanceService.createMany(body);
-    sendResponse(res, result);
-};
-// UPDATE Attendance
-const updateOne = async (req: Request, res: Response) => {
-    let _id = req.params.id;
-    let body = req.body;
-    let result: object = await attendanceService.updateOne(_id, body);
     sendResponse(res, result);
 };
 // DELETE One Attendance
@@ -46,4 +45,4 @@ const deleteMany = async (req: Request, res: Response) => {
     sendResponse(res, result);
 };
 
-export default { getAll, getOne, createOne, createMany, updateOne, deleteOne, deleteMany };
+export default { getAll, createOne, createMany, deleteOne, deleteMany };

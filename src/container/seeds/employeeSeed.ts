@@ -20,7 +20,7 @@ const EmployeeSeed = async () => {
     let adminAccounts = [];
 
     // create 10 random accounts
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 12; i++) {
         const admins = new EmployeeModel({
             employeeId: '2021-' + faker.datatype.number(9999),
             name: {
