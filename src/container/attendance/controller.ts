@@ -12,7 +12,7 @@ const getAll = async (req: Request, res: Response) => {
         result =
             attendance === 'attendance-overview'
                 ? await attendanceService.getAllForAO(month as string, year as string, employee as string)
-                : await attendanceService.getAllForDM(day as string, month as string, year as string, employee as string);
+                : await attendanceService.getAllForDM(month as string, year as string, employee as string);
     }
     sendResponse(res, result);
 };

@@ -18,30 +18,25 @@ class AttendanceService {
             return { success: false, message: 'Failed to GET All Attendance for Attendance Overview', deeplog: error, code: 400 };
         }
     }
-    async getAllForDM(day: string, month: string, year: string, employee?: string) {
+    async getAllForDM(month: string, year: string, employee?: string) {
         try {
             // GET All attendance
             let allAttendance: any;
             const results: any = [];
             if (employee) {
-                allAttendance = await AttendanceModel.find({ month, year, employee });
+                allAttendance = await AttendanceModel.find({ month, year, employee }).lean();
             } else {
-                allAttendance = await AttendanceModel.find({ month, year });
+                allAttendance = await AttendanceModel.find({ month, year }).lean();
             }
 
             allAttendance.forEach((item: any) => {
-                item.monthRecord.every((item2: any) => {
-                    if (item2.day === day) {
-                        results.push({
-                            employee: item.employee,
-                            month,
-                            year,
-                            ...item2
-                        });
-                        return false;
-                    } else {
-                        return true;
-                    }
+                item.monthRecord.forEach((item2: any) => {
+                    results.push({
+                        employee: item.employee,
+                        month,
+                        year,
+                        ...item2
+                    });
                 });
             });
             return { successs: true, data: results, code: 200 };
