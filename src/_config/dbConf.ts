@@ -3,7 +3,7 @@ const { DBURI } = process.env;
 
 module.exports = async () => {
     try {
-        await mongoose.connect(DBURI, {
+        await mongoose.connect('mongodb://localhost:27017/hris', {
             useUnifiedTopology: true,
             useNewUrlParser: true,
             useFindAndModify: false,
