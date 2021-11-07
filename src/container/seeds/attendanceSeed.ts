@@ -45,14 +45,16 @@ const AttendanceSeed = async () => {
     let listOfMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     // create 10 attendance
     for (let i = 0; i < 12; i++) {
-        const attendance = new AttendanceModel({
-            employee: employees[i]._id,
-            month: listOfMonths[i],
-            year: '2021',
-            monthRecord
-        });
-        // push generated data to the holder
-        manyAttendance.push(attendance);
+        for (let j = 0; j < 10; j++) {
+            const attendance = new AttendanceModel({
+                employee: employees[j]._id,
+                month: listOfMonths[i],
+                year: '2021',
+                monthRecord
+            });
+            // push generated data to the holder
+            manyAttendance.push(attendance);
+        }
     }
     const attendanceConfig = {
         officeHours: {
