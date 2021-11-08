@@ -8,9 +8,9 @@ class AttendanceService {
             // GET All attendance via month and year
             let allAttendance: any;
             if (employee) {
-                allAttendance = await AttendanceModel.findOne({ month, year, employee });
+                allAttendance = await AttendanceModel.findOne({ month, year, employee }).populate('employee');
             } else {
-                allAttendance = await AttendanceModel.find({ month, year });
+                allAttendance = await AttendanceModel.find({ month, year }).populate('employee');
             }
 
             return { successs: true, data: allAttendance, code: 200 };
@@ -24,9 +24,9 @@ class AttendanceService {
             let allAttendance: any;
             const results: any = [];
             if (employee) {
-                allAttendance = await AttendanceModel.find({ month, year, employee }).lean();
+                allAttendance = await AttendanceModel.find({ month, year, employee }).populate('employee').lean();
             } else {
-                allAttendance = await AttendanceModel.find({ month, year }).lean();
+                allAttendance = await AttendanceModel.find({ month, year }).populate('employee').lean();
             }
 
             allAttendance.forEach((item: any) => {
